@@ -1,0 +1,7 @@
+SERVER_PORT=3000
+LOG_LEVEL=debug
+POSTGRES_USERNAME=shopify
+POSTGRES_PASSWORD=shopify
+POSTGRES_DB=shopify
+DB_HOSTNAME=localhost
+NODE_ENV=development

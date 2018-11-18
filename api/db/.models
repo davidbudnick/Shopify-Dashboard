@@ -1,0 +1,1 @@
+yarn sq model:generate --name Temp --attributes temp:string

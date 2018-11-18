@@ -1,0 +1,71 @@
+version: '3'
+networks:
+  default:
+    external:
+      name: proxy
+services:
+  traefik:
+    image: traefik:alpine
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/traefik.toml
+      - ./acme.json:/acme.json
+  ui:
+    image: dbudnick/shopify-dashboard-ui
+    restart: always
+    labels:
+      - 'traefik.backend=ui'
+      - "traefik.docker.network=proxy"
+      - "traefik.frontend.rule=Host:shopify.budnick.io"
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.default.protocol=http"
+      - "traefik.frontend.priority=10"
+  backend:
+    restart: always
+    image: dbudnick/shopify-dashbaord-api
+    build: .
+    labels:
+      - "traefik.backend=be"
+      - "traefik.docker.network=proxy"
+      - "traefik.enable=true"
+      - "traefik.port=3000"
+      - "traefik.frontend.rule=PathPrefixStrip:/api/"
+      - "traefik.default.protocol=http"
+      - "traefik.frontend.priority=20"
+    ports:
+      - 4000:4000
+    depends_on:
+      - postgres
+    environment:
+      SERVER_PORT: 4000
+      NODE_ENV: production
+      DB_HOSTNAME: postgres
+      # API_KEY: 
+      # SECRET: 
+      # USER_ID: 
+      # ACCESS_TOKEN: 
+      # ACCESS_TOKEN_SECRET: 
+      POSTGRES_USERNAME: fg
+      # POSTGRES_PASSWORD: 
+      POSTGRES_DB: fg
+      DB_HOSTNAME: postgres
+  postgres:
+    image: postgres:10-alpine
+    restart: always
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    labels:
+      - 'traefik.postgres=postgres'
+      - 'traefik.docker.network=proxy'
+      - 'traefik.enable=true'
+      - 'traefik.port=5432'
+      - 'traefik.default.protocol=http'
+    environment:
+      POSTGRES_USER: fg
+      # POSTGRES_PASSWORD: 
+      POSTGRES_DB: fg

@@ -73,7 +73,3 @@ code {
   display: block !important;
   transform: translateY(-100%) !important;
 }
-
-.auth0-lock-alternative {
-  display: none;
-}

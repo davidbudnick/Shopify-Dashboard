@@ -1,26 +1,40 @@
 import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import Posts from './components/Posts';
-import PostForm from './components/PostForm';
 import store from './store';
-
+import Posts from './components/Posts';
+// import PostForm from './components/PostForm';
+import SecuredRoute from './components/SecuredRoute';
+import auth0Client from './Auth';
+import Callback from './components/Callback';
+import Auth0 from './components/Auth0';
 import './App.css';
 import 'bulma/css/bulma.css';
 require('dotenv').config();
-// import { Route, withRouter } from 'react-router-dom';
-// import SecuredRoute from './SecuredRoute/SecuredRoute';
-// import auth0Client from './Auth';
-// import Callback from './Callback';
 
 class App extends Component {
+  async componentDidMount() {
+    if (this.props.location.pathname === '/callback') return;
+    try {
+      await auth0Client.silentAuth();
+      this.forceUpdate();
+    } catch (err) {
+      if (err.error === 'login_required') return;
+      console.log(err.error);
+    }
+  }
+
   render() {
     return (
       <Provider store={store}>
         <div className="App">
           <header className="App-header">
-            <PostForm />
+            <Auth0 />
+            {/* <PostForm />
             <hr />
-            <Posts />
+            <Posts /> */}
+            <Route exact path="/callback" component={Callback} />
+            <SecuredRoute path="/" component={Posts} />
           </header>
         </div>
       </Provider>
@@ -28,4 +42,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

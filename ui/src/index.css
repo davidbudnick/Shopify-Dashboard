@@ -10,3 +10,66 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.ml {
+  margin-left: 0.5rem !important;
+}
+
+.mr {
+  margin-right: 0.5rem !important;
+}
+
+.mt {
+  margin-top: 0.5rem !important;
+}
+
+.mb {
+  margin-bottom: 0.5rem !important;
+}
+
+/* Loading Icon */
+.loadersmall {
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Auth 0 stuff */
+.authLock {
+  margin-top: 12px !important;
+  margin-right: 10px !important;
+}
+
+.auth0-loading-container {
+  background-color: #2c3e50 !important;
+}
+
+.auth0-lock-header {
+  display: none !important;
+}
+
+.auth0-lock-content {
+  padding-bottom: 0px !important;
+  padding-left: 0px !important;
+  padding-top: 0px !important;
+  padding-right: 0px !important;
+}
+
+/* Fixes container error when loading lock */
+.authHide {
+  display: none !important;
+}
+
+.open {
+  display: none !important;
+  transform: translateY(0%) !important;
+}
+
+.closed {
+  display: block !important;
+  transform: translateY(-100%) !important;
+}

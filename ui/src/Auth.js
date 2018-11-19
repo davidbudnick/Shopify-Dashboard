@@ -1,4 +1,5 @@
 import auth0 from 'auth0-js';
+require('dotenv').config();
 
 class Auth {
   constructor() {
@@ -19,7 +20,6 @@ class Auth {
   }
 
   getProfile() {
-    console.log(this.profile);
     return this.profile;
   }
 

@@ -19,6 +19,7 @@ class Auth {
   }
 
   getProfile() {
+    console.log(this.profile);
     return this.profile;
   }
 

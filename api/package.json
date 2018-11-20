@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js | pino-pretty",
+    "start": "node index.js",
     "deploy": "docker build -t dbudnick/shopify-dashbaord-api . && docker login && docker push dbudnick/shopify-dashbaord-api",
     "deploy-start": "yarn sq db:migrate && yarn start",
     "sq": "./node_modules/.bin/sequelize --config db/config/config.js --models-path db/models --migrations-path db/migrations",

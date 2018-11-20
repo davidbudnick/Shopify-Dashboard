@@ -18,10 +18,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //Routers
-// const temp = require('./src/routes/temp');
+const products = require('./src/routes/products');
 
 //Using Routes
-// app.use('/temp', temp);
+app.use('/products', products);
 
 app.get('/', (req, res) => {
   res.send('Route Active: 🤖');

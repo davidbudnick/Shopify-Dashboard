@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
-import Home from './components/pages/Home';
+// import Home from './components/pages/Home';
 import Callback from './Callback';
 import auth0Client from './Auth';
 import SecuredRoute from './components/elements/SecuredRoute';
 
 import './App.css';
 import Posts from './components/elements/Posts';
+import Products from './components/elements/Products';
 
 class App extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Products} />
           <SecuredRoute exact path="/posts" component={Posts} />
           <Route exact path="/callback" component={Callback} />
         </header>

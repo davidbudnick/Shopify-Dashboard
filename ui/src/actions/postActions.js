@@ -1,4 +1,5 @@
 import { FETCH_POSTS, NEW_POST } from './types';
+require('dotenv').config();
 
 export const fetchPosts = () => (dispatch) => {
   fetch('https://jsonplaceholder.typicode.com/posts')

@@ -6,25 +6,27 @@ import propTypes from 'prop-types';
 class Products extends Component {
   componentWillMount() {
     this.props.getProducts();
+    console.log(this.props.getProducts());
   }
 
   render() {
-    const productItems = this.props.posts.map((product) => (
-      <div key={product.id}>
-        <p>{product.title}</p>
-      </div>
-    ));
-    return <div>{productItems}</div>;
+    return <div>Div Render</div>;
+    // const postItems = this.props.posts.map((post) => (
+    //   <div key={post.id}>
+    //     <h3>{post.title}</h3>
+    //     <p>{post.body}</p>
+    //   </div>
+    // ));
+    // return <div>{postItems}</div>;
   }
 }
 
 Products.propTypes = {
   getProducts: propTypes.func.isRequired,
-  products: propTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  products: state.products.items,
+  products: state.shopify.products,
 });
 
 export default connect(

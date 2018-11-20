@@ -3,7 +3,6 @@ import auth0 from 'auth0-js';
 class Auth {
   constructor() {
     this.auth0 = new auth0.WebAuth({
-      // the following three lines MUST be updated
       domain: process.env.REACT_APP_AUTH0_DOMAIN,
       audience: process.env.REACT_APP_AUTH0_AUDIENCE,
       clientID: process.env.REACT_APP_AUTH0_CLIENT_ID,

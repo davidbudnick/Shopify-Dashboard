@@ -13,7 +13,7 @@ export class NavBar extends Component {
     return (
       <nav className="navbar navbar-dark bg-primary fixed-top">
         <Link className="navbar-brand" to="/">
-          Q&App
+          Shopify Dashbaord
         </Link>
         {!auth0Client.isAuthenticated() && (
           <button className="btn btn-dark" onClick={auth0Client.signIn}>
@@ -22,7 +22,7 @@ export class NavBar extends Component {
         )}
         {auth0Client.isAuthenticated() && (
           <div>
-            <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
+            <label className="mr-2 text-white mt mr">{auth0Client.getProfile().name}</label>
             <button
               className="btn btn-dark"
               onClick={() => {

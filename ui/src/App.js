@@ -16,10 +16,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    if (this.props.location.pathname === '/callback') {
-      this.setState({ checkingSession: false });
-      return;
-    }
+    if (this.props.location.pathname === '/callback') return;
     try {
       await auth0Client.silentAuth();
       this.forceUpdate();
@@ -27,7 +24,6 @@ class App extends Component {
       if (err.error === 'login_required') return;
       console.log(err.error);
     }
-    this.setState({ checkingSession: false });
   }
 
   render() {

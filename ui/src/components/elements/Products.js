@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getProducts } from '../actions/shopifyActions';
+import { getProducts } from '../../actions/shopifyActions';
 import propTypes from 'prop-types';
 
 class Products extends Component {

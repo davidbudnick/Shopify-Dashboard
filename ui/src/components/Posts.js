@@ -21,12 +21,7 @@ class Posts extends Component {
         <p>{post.body}</p>
       </div>
     ));
-    return (
-      <div>
-        <div className="button">Testing Bulma</div>
-        {postItems}
-      </div>
-    );
+    return <div>{postItems}</div>;
   }
 }
 

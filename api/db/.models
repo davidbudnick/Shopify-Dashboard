@@ -1,1 +1,12 @@
-yarn sq model:generate --name Temp --attributes temp:string
+yarn sq model:generate --name User --attributes userId:string,firstName:string,lastName:string,fullName:string,nickName:string,picture:string,projects:json
+
+
+//PROJECTS JSON
+0[
+  {
+    //Note: Add "/admin/" at the end of the domain when saved to the db
+    ShopifyDomain:https://budnick1.myshopify.com
+    ShopifyApiKey:a956c6a8bea9af1c64838bdb90fdd777,
+    ShopifyApiPassword:f7fd2c7c65147f58e3ebebe9d5638888,
+  }
+]

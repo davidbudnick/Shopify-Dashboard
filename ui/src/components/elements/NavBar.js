@@ -4,6 +4,12 @@ import auth0Client from '../../Auth';
 import { Link, withRouter } from 'react-router-dom';
 
 export class NavBar extends Component {
+  componentDidMount() {
+    if (auth0Client.isAuthenticated()) {
+      console.log(auth0Client.getProfile().sub);
+    }
+  }
+
   render() {
     const signOut = () => {
       auth0Client.signOut();

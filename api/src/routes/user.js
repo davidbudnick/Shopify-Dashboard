@@ -21,4 +21,10 @@ router.get('/all', async (req, res, next) => {
   //Sends all user in broswer
   res.send(userData);
 });
+
+router.get('/:id', async (req, res, next) => {
+  userData = await user.getUser(req.params.id);
+  res.send(userData);
+});
+
 module.exports = router;

@@ -10,208 +10,208 @@ export class NotFound extends Component {
           ERROR 404
         </p>
         <div id="container">
-          <div class="server" id="server1">
-            <div class="hdd-container">
-              <div class="hdd">
-                <div class="led green-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led green-led" />
+          <div className="server" id="server1">
+            <div className="hdd-container">
+              <div className="hdd">
+                <div className="led green-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led green-led" />
               </div>
-              <div class="hdd">
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
+              <div className="hdd">
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
               </div>
-              <div class="hdd">
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led" />
+              <div className="hdd">
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led" />
               </div>
-              <div class="hdd">
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led" />
+              <div className="hdd">
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led" />
               </div>
-              <div class="hdd">
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led" />
-              </div>
-            </div>
-            <div class="cooling-system">
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-            </div>
-          </div>
-          <div class="server" id="server2">
-            <div class="hdd-container">
-              <div class="hdd">
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led" />
-              </div>
-              <div class="hdd">
-                <div class="led " />
-                <div class="led red-led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led" />
-              </div>
-              <div class="hdd">
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led" />
-              </div>
-              <div class="hdd">
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led" />
-              </div>
-              <div class="hdd">
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led" />
+              <div className="hdd">
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led" />
               </div>
             </div>
-            <div class="cooling-system">
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
+            <div className="cooling-system">
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
             </div>
           </div>
-          <div class="server" id="server3">
-            <div class="hdd-container">
-              <div class="hdd">
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led" />
+          <div className="server" id="server2">
+            <div className="hdd-container">
+              <div className="hdd">
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led" />
               </div>
-              <div class="hdd">
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led" />
+              <div className="hdd">
+                <div className="led " />
+                <div className="led red-led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led" />
               </div>
-              <div class="hdd">
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led" />
+              <div className="hdd">
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led" />
               </div>
-              <div class="hdd">
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led" />
+              <div className="hdd">
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led" />
               </div>
-              <div class="hdd">
-                <div class="led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led red-led" />
-                <div class="led" />
+              <div className="hdd">
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led" />
               </div>
             </div>
-            <div class="cooling-system">
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
-              <div class="grid" />
+            <div className="cooling-system">
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+            </div>
+          </div>
+          <div className="server" id="server3">
+            <div className="hdd-container">
+              <div className="hdd">
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led" />
+              </div>
+              <div className="hdd">
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led" />
+              </div>
+              <div className="hdd">
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led" />
+              </div>
+              <div className="hdd">
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led" />
+              </div>
+              <div className="hdd">
+                <div className="led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led red-led" />
+                <div className="led" />
+              </div>
+            </div>
+            <div className="cooling-system">
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
+              <div className="grid" />
             </div>
           </div>
         </div>

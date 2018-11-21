@@ -26,8 +26,9 @@ class Auth {
       })
       .then((dbUser) => {
         console.log(dbUser.data);
+        sessionStorage.setItem('userid', dbUser.data.userId);
       });
-    console.log(this.profile);
+
     return this.profile;
   }
 

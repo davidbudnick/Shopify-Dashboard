@@ -46,5 +46,19 @@ async function findAllUsers() {
   return userData;
 }
 
+//Gets current users data from db
+async function getUser(userId) {
+  let userData = await db.User.findOne({
+    where: {
+      userId: userId,
+    },
+  }).catch((err) => {
+    logger.error('User could not be found in db', err);
+  });
+
+  return userData;
+}
+
 module.exports.addUser = addUser;
 module.exports.findAllUsers = findAllUsers;
+module.exports.getUser = getUser;

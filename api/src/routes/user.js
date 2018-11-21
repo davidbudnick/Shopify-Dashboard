@@ -13,8 +13,9 @@ router.post('/', async (req, res, next) => {
   res.send(userData);
 });
 
+//Finds all users in the db
+//TODO: Remove this for production
 router.get('/all', async (req, res, next) => {
-  //Finds all users in the db
   let userData = await user.findAllUsers();
 
   //Sends all user in broswer

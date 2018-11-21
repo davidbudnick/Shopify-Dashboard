@@ -36,6 +36,7 @@ async function addUser(profile) {
 }
 
 //Finds all users in db
+//TODO: Remove this for production
 async function findAllUsers() {
   let userData = await db.User.findAll().catch((err) => {
     logger.error('Error finding users in db', err);

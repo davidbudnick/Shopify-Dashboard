@@ -5,6 +5,7 @@ import Callback from './Callback';
 import auth0Client from './Auth';
 import SecuredRoute from './components/elements/SecuredRoute';
 import NavBar from './components/elements/NavBar';
+import 'bulma/css/bulma.css';
 
 import './App.css';
 import Posts from './components/elements/Posts';

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Switch } from 'react-router-dom';
 import Home from './components/pages/Home';
 import Callback from './Callback';
 import auth0Client from './Auth';
 import SecuredRoute from './components/elements/SecuredRoute';
 import NavBar from './components/elements/NavBar';
+import NotFound from './components/pages/NotFound';
 import 'bulma/css/bulma.css';
 
 import './App.css';
@@ -34,9 +35,12 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <NavBar />
-          <Route exact path="/" component={Home} />
-          <SecuredRoute exact path="/posts" component={Posts} />
-          <Route exact path="/callback" component={Callback} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <SecuredRoute exact path="/posts" component={Posts} />
+            <Route exact path="/callback" component={Callback} />
+            <Route component={NotFound} />
+          </Switch>
         </header>
       </div>
     );

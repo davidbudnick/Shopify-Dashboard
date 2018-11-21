@@ -1,18 +1,16 @@
-/* eslint-disable*/
-import React, { Component } from 'react';
+/* eslint-disable*/ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getProducts } from '../../actions/shopifyActions';
+import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 import temp from '../img/temp.jpg';
-
 class Products extends Component {
   componentWillMount() {
     this.props.getProducts();
   }
-
   render() {
     const productItems = this.props.products.map((product) => (
-      <div key={product.id} className="column is-2">
+      <div key="{product.id}" className="column is-2">
         <div className="card ">
           <div className="card-image">
             <figure className="image is-3by2">
@@ -22,13 +20,23 @@ class Products extends Component {
           <div className="card-content">
             <div className="media">
               <div className="media-content">
-                <p className="title is-4">{product.title}</p>
-                <p className="subtitle is-6">{product.vendor}</p>
+                <div className="title is-5">{product.title}</div>
+                <div className="subtitle is-6">{product.vendor}</div>
               </div>
             </div>
-
             <div className="content">{product.body_html}</div>
           </div>
+          <footer class="card-footer">
+            <Link to={{ pathname: '/product/view/' + product.id }} class="card-footer-item">
+              View
+            </Link>
+            <Link to={{ pathname: '/product/edit/' + product.id }} class="card-footer-item">
+              Edit
+            </Link>
+            <Link to={{ pathname: '/product/delete/' + product.id }} class="card-footer-item">
+              Delete
+            </Link>
+          </footer>
         </div>
       </div>
     ));
@@ -39,14 +47,8 @@ class Products extends Component {
     );
   }
 }
-
-Products.propTypes = {
-  getProducts: propTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  products: state.shopify.products,
-});
+Products.propTypes = { getProducts: propTypes.func.isRequired };
+const mapStateToProps = (state) => ({ products: state.shopify.products });
 
 export default connect(
   mapStateToProps,

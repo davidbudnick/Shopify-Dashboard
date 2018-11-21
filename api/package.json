@@ -12,7 +12,8 @@
     "down": "docker-compose down",
     "dbd": "yarn sq db:drop",
     "dbc": "yarn sq db:create",
-    "dbm": "yarn sq db:migrate"
+    "dbm": "yarn sq db:migrate",
+    "dbr": "yarn dbd && yarn dbc && yarn dbm"
   },
   "dependencies": {
     "axios": "^0.18.0",

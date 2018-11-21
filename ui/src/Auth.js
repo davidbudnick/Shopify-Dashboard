@@ -1,4 +1,5 @@
 import auth0 from 'auth0-js';
+import axios from 'axios';
 
 class Auth {
   constructor() {
@@ -19,6 +20,13 @@ class Auth {
   }
 
   getProfile() {
+    axios
+      .post('http://localhost:4000/user', {
+        profile: this.profile,
+      })
+      .then((dbUser) => {
+        console.log(dbUser.data);
+      });
     console.log(this.profile);
     return this.profile;
   }

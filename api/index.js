@@ -19,9 +19,11 @@ app.use(bodyParser.json());
 
 //Routers
 const products = require('./src/routes/products');
+const user = require('./src/routes/user');
 
 //Using Routes
 app.use('/products', products);
+app.use('/user', user);
 
 app.get('/', (req, res) => {
   res.send('Route Active: 🤖');

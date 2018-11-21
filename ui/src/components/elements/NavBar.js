@@ -22,7 +22,7 @@ export class NavBar extends Component {
 
         <div id="navMenuColorprimary-example" className="navbar-menu">
           <div className="navbar-start">
-            <a className="navbar-item" href="https://bulma.io/">
+            <a className="navbar-item" href="/">
               Shopify Dashbaord
             </a>
           </div>

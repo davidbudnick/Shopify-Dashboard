@@ -20,15 +20,9 @@ class Auth {
   }
 
   getProfile() {
-    axios
-      .post('http://localhost:4000/user', {
-        profile: this.profile,
-      })
-      .then((dbUser) => {
-        console.log(dbUser.data);
-        sessionStorage.setItem('userid', dbUser.data.userId);
-      });
-
+    axios.post('http://localhost:4000/user', {
+      profile: this.profile,
+    });
     return this.profile;
   }
 
@@ -65,6 +59,7 @@ class Auth {
   }
 
   signOut() {
+    sessionStorage.removeItem('userid');
     this.auth0.logout({
       returnTo: process.env.REACT_APP_FRONTEND_ADDRESS,
       clientID: process.env.REACT_APP_AUTH0_CLIENT_ID,

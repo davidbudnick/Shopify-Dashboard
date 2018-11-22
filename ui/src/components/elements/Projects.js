@@ -2,22 +2,24 @@
 import { connect } from 'react-redux';
 import { getUser } from '../../actions/userActions';
 import propTypes from 'prop-types';
-import auth0Client from '../../Auth';
+import axios from 'axios';
 
 class Projects extends Component {
   componentWillMount() {
-    this.props.getUser();
+    console.log(this.props.location.pathname.substring(9));
+    this.props.getUser(this.props.location.pathname.substring(9));
   }
+
   render() {
     return (
       <div>
-        {auth0Client.isAuthenticated() && (
-          <p className="control mt">
-            <a className="has-text-white">
-              <label className="mr" />
-            </a>
-          </p>
-        )}
+        <p className="control mt">
+          <b />
+          <b />
+          <b />
+          <b />
+          <a className="">Hey! {this.props.user.fullName}</a>
+        </p>
       </div>
     );
   }

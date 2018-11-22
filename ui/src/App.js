@@ -10,6 +10,7 @@ import 'bulma/css/bulma.css';
 
 import './App.css';
 import Posts from './components/elements/Posts';
+import Projects from './components/elements/Projects';
 
 class App extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class App extends Component {
           <NavBar />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/profile/:id" component={Projects} />
             <SecuredRoute exact path="/posts" component={Posts} />
             <Route exact path="/callback" component={Callback} />
             <Route component={NotFound} />

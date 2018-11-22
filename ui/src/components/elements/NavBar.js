@@ -4,16 +4,14 @@ import auth0Client from '../../Auth';
 import { Link, withRouter } from 'react-router-dom';
 
 export class NavBar extends Component {
-  componentDidMount() {
-    if (auth0Client.isAuthenticated()) {
-      console.log(auth0Client.getProfile().sub);
-    }
-  }
-
   render() {
+    const goHome = () => {
+      this.props.history.replace('/profile/' + auth0Client.getProfile().sub);
+    };
+
     const signOut = () => {
       auth0Client.signOut();
-      props.history.replace('/');
+      this.props.history.replace('/');
     };
 
     return (
@@ -27,11 +25,23 @@ export class NavBar extends Component {
         </div>
 
         <div id="navMenuColorprimary-example" className="navbar-menu">
-          <div className="navbar-start">
-            <a className="navbar-item" href="/">
-              Shopify Dashbaord
-            </a>
-          </div>
+          {auth0Client.isAuthenticated() && (
+            <div className="navbar-start">
+              <a
+                className="navbar-item"
+                onClick={() => {
+                  goHome();
+                }}
+              >
+                Shopify Dashbaord
+              </a>
+            </div>
+          )}
+          {!auth0Client.isAuthenticated() && (
+            <div className="navbar-start">
+              <a className="navbar-item">Shopify Dashbaord</a>
+            </div>
+          )}
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="field is-grouped">

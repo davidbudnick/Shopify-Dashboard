@@ -4,12 +4,7 @@ import Projects from '../elements/Projects';
 
 export class Home extends Component {
   render() {
-    return (
-      <div>
-        {/* <Products /> */}
-        <Projects />
-      </div>
-    );
+    return <div />;
   }
 }
 

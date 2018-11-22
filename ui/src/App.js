@@ -9,6 +9,7 @@ import NotFound from './components/pages/NotFound';
 import 'bulma/css/bulma.css';
 import Posts from './components/elements/Posts';
 import Projects from './components/elements/Projects';
+import NewProject from './components/elements/NewProject';
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/profile/:id" component={Projects} />
             <SecuredRoute exact path="/posts" component={Posts} />
+            <Route exact path="/newProject/:id" component={NewProject} />
             <Route exact path="/callback" component={Callback} />
             <Route component={NotFound} />
           </Switch>

@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 import { getUser } from '../../actions/userActions';
 import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+
 class Projects extends Component {
   componentWillMount() {
-    this.props.getUser(this.props.location.pathname.substring(9));
+    this.props.getUser(this.props.match.params.id);
   }
   render() {
     return (
       <div className="container mt">
         <div className="columns is-multiline">
           <div className="column is-narrow">
-            <Link to="/newProject">
+            <Link to={{ pathname: '/newProject/' + this.props.match.params.id }}>
               <div className="box has-text-centered addBox ml mt">
                 <i className="fas fa-plus is-size-3 newProject" />
                 <p className="mb is-size-5 has-text-weight-bold	">Add your shopify store</p>

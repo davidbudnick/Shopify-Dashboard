@@ -1,15 +1,8 @@
 const axios = require('axios');
 require('dotenv').config();
 
-let url = `${process.env.REACT_APP_SHOPIFY_DOMAIN}products.json`;
+let id = 'google-oauth2|115591737006318112594';
 
-axios({
-  method: 'get',
-  url,
-  auth: {
-    username: process.env.REACT_APP_SHOPIFY_USERNAME,
-    password: process.env.REACT_APP_SHOPIFY_PASSWORD,
-  },
-}).then((products) => {
-  console.log(products.data);
+axios.get(`http://localhost:4000/user/${id}`).then(function(response) {
+  console.log(response.data);
 });

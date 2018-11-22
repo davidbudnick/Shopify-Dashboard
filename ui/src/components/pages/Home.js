@@ -6,8 +6,8 @@ export class Home extends Component {
   render() {
     return (
       <div>
-        <Products />
-        {/* <Projects /> */}
+        {/* <Products /> */}
+        <Projects />
       </div>
     );
   }

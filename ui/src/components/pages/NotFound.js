@@ -5,7 +5,7 @@ export class NotFound extends Component {
   render() {
     return (
       <div className="bodyCust">
-        <h1 className="is-size-1">Oh No!</h1>
+        <h1 className="is-size-1">Oh No! </h1>
         <p id="error" className="is-size-1">
           ERROR 404
         </p>

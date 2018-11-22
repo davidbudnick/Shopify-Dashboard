@@ -6,7 +6,7 @@ import auth0Client from '../../Auth';
 
 class Projects extends Component {
   componentWillMount() {
-    console.log(auth0Client.getUser());
+    this.props.getUser();
   }
   render() {
     return (

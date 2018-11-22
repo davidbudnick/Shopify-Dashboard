@@ -24,7 +24,7 @@ class Products extends Component {
                 <div className="subtitle is-6">{product.vendor}</div>
               </div>
             </div>
-            <div className="content">{product.body_html}</div>
+            {/* <div className="content">{product.body_html}</div> */}
           </div>
           <footer class="card-footer">
             <Link to={{ pathname: '/product/view/' + product.id }} class="card-footer-item">
@@ -42,7 +42,7 @@ class Products extends Component {
     ));
     return (
       <div className="mt mr ml">
-        <div className="columns is-multiline">{productItems}</div>
+        <div className="columns is-moblie is-multiline">{productItems}</div>
       </div>
     );
   }

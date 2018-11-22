@@ -28,7 +28,7 @@ export class NavBar extends Component {
           {auth0Client.isAuthenticated() && (
             <div className="navbar-start">
               <a
-                className="navbar-item"
+                className="navbar-item titleText"
                 onClick={() => {
                   goHome();
                 }}
@@ -39,7 +39,7 @@ export class NavBar extends Component {
           )}
           {!auth0Client.isAuthenticated() && (
             <div className="navbar-start">
-              <a className="navbar-item">Shopify Dashbaord</a>
+              <a className="navbar-item titleText">Shopify Dashbaord</a>
             </div>
           )}
           <div className="navbar-end">

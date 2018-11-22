@@ -48,6 +48,7 @@ async function findAllUsers() {
 
 //Gets current users data from db
 async function getUser(userId) {
+  //Finds the single user in the db
   let userData = await db.User.findOne({
     where: {
       userId: userId,
@@ -56,9 +57,58 @@ async function getUser(userId) {
     logger.error('User could not be found in db', err);
   });
 
+  //Returns all the current user data
   return userData;
+}
+
+//Creates a project by userId in the User JSON object
+async function createProject(projectInfo, userId) {
+  //TODO: This might not work I should be able to push just a json object not an object
+  let projects = [];
+  projects.push(projectInfo);
+
+  //Creates the record in the db
+  let projectData = await db.User.update({ projects: projects }, { where: { userId: userId } }).catch((err) => {
+    logger.error('There was an error updated the projects', errr);
+  });
+
+  //Returns the project that was created
+  return projectData;
+}
+
+//Gets a single project by projectId from the db
+async function getProject(projectId, userId) {
+  //Finds one user in the db
+  let projectData = await db.User.findOne({
+    where: {
+      userId: userId,
+    },
+  }).catch((err) => {
+    logger.error('There was an error finding the project', err);
+  });
+
+  //Picks out the single project from the JSON object
+  return projectData.projects[projectId];
+}
+
+//Find all the projects the user has
+async function getProjects(userId) {
+  //Finds all in the db
+  let projectData = await db.User.findAll({
+    where: {
+      userId: userId,
+    },
+  }).catch((err) => {
+    logger.error('There was an error finding the projects', err);
+  });
+
+  //Returns all project data
+  return projectData.projects;
 }
 
 module.exports.addUser = addUser;
 module.exports.findAllUsers = findAllUsers;
 module.exports.getUser = getUser;
+module.exports.createProject = createProject;
+module.exports.getProject = getProject;
+module.exports.getProjects = getProjects;

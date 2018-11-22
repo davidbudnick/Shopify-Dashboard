@@ -7,8 +7,6 @@ import SecuredRoute from './components/elements/SecuredRoute';
 import NavBar from './components/elements/NavBar';
 import NotFound from './components/pages/NotFound';
 import 'bulma/css/bulma.css';
-
-import './App.css';
 import Posts from './components/elements/Posts';
 import Projects from './components/elements/Projects';
 

@@ -10,19 +10,20 @@ class Projects extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="container mt">
         <div className="columns is-multiline">
           <div className="column is-narrow">
             <Link to="/newProject">
               <div className="box has-text-centered addBox ml mt">
-                <i className="fas fa-plus is-size-5 newProject" />
+                <i className="fas fa-plus is-size-3 newProject" />
+                <p className="mb is-size-5 has-text-weight-bold	">Add your shopify store</p>
               </div>
             </Link>
           </div>
           <div className="column is-narrow">
             <Link to={{ pathname: this.props.user.userId + '/project/' + '1' }}>
               <div className="box has-text-centered addBox ml mt">
-                <div className="newProject">Project Name</div>
+                <div className="projectTitle text is-size-3">Test Store</div>
               </div>
             </Link>
           </div>

@@ -15,8 +15,8 @@
 }
 
 .addBox {
-  height: 270px;
-  width: 270px;
+  height: 300px;
+  width: 280px;
 }
 
 .newProject {
@@ -24,4 +24,14 @@
   line-height: 220px;
   vertical-align: middle;
   width: 230px;
+}
+
+.projectTitle {
+  padding-top: 90px;
+}
+
+.titleText {
+  font-family: 'Lobster', cursive !important;
+  font-weight: lighter !important;
+  font-size: 26px;
 }

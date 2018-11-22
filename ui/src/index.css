@@ -13,3 +13,15 @@
 .mb {
   margin-bottom: 0.5rem !important;
 }
+
+.addBox {
+  height: 270px;
+  width: 270px;
+}
+
+.newProject {
+  text-align: center;
+  line-height: 220px;
+  vertical-align: middle;
+  width: 230px;
+}

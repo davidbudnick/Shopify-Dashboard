@@ -1,26 +1,15 @@
-import { CREATE_PROJECT } from '../actions/types';
+import { GET_PROJECT } from '../actions/types';
 
 const initailState = {
-  product: [],
-  projects: [],
+  project: [],
 };
 
 export default function(state = initailState, action) {
   switch (action.type) {
-    case CREATE_PROJECT:
-      return {
-        ...state,
-        product: action.payload,
-      };
     case GET_PROJECT:
       return {
         ...state,
-        product: action.payload,
-      };
-    case GET_PROJECTS:
-      return {
-        ...state,
-        projects: action.payload,
+        project: action.payload,
       };
     default:
       return state;

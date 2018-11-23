@@ -7,8 +7,7 @@ export const GET_PRODUCTS = 'GET_PRODUCTS';
 
 //User Exports
 export const GET_USER = 'GET_USER';
+export const CREATE_PROJECT = 'CREATE_PROJECT';
 
 //Project Exports
-// export const GET_PROJECTS = 'GET_PROJECTS';
-// export const GET_PROJECT = 'GET_PROJECT';
-export const CREATE_PROJECT = 'CREATE_PROJECT';
+export const GET_PROJECT = 'GET_PROJECT';

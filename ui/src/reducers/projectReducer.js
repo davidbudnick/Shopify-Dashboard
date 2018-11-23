@@ -1,4 +1,4 @@
-import { CREATE_PROJECT, GET_PROJECT, GET_PROJECTS } from '../actions/types';
+import { CREATE_PROJECT } from '../actions/types';
 
 const initailState = {
   product: [],

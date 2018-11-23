@@ -91,20 +91,21 @@ async function getProject(projectId, userId) {
   return projectData.projects[projectId];
 }
 
-//Find all the projects the user has
-async function getProjects(userId) {
-  //Finds all in the db
-  let projectData = await db.User.findAll({
-    where: {
-      userId: userId,
-    },
-  }).catch((err) => {
-    logger.error('There was an error finding the projects', err);
-  });
+//Will not be needed
+// //Find all the projects the user has
+// async function getProjects(userId) {
+//   //Finds all in the db
+//   let projectData = await db.User.findAll({
+//     where: {
+//       userId: userId,
+//     },
+//   }).catch((err) => {
+//     logger.error('There was an error finding the projects', err);
+//   });
 
-  //Returns all project data
-  return projectData.projects;
-}
+//   //Returns all project data
+//   return projectData.projects;
+// }
 
 module.exports.addUser = addUser;
 module.exports.findAllUsers = findAllUsers;

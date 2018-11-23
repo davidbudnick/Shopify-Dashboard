@@ -41,11 +41,12 @@ router.get('/project/:userId/:projectId', async (req, res, next) => {
   res.send(projectData);
 });
 
-router.get('/projects/:userId', async (req, res, next) => {
-  //Gets all projects by userId
-  let projectData = await user.getProjects(req.parms.userId);
-  //Sends all project data back to the user
-  res.send(projectData);
-});
+//This should not be need because I get the user object that has the projects JSON OBJECT
+// router.get('/projects/:userId', async (req, res, next) => {
+//   //Gets all projects by userId
+//   let projectData = await user.getProjects(req.parms.userId);
+//   //Sends all project data back to the user
+//   res.send(projectData);
+// });
 
 module.exports = router;

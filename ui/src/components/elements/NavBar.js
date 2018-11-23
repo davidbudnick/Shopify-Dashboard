@@ -6,7 +6,7 @@ import { Link, withRouter } from 'react-router-dom';
 export class NavBar extends Component {
   render() {
     const goHome = () => {
-      this.props.history.replace('/profile/' + auth0Client.getProfile().sub);
+      this.props.history.replace('/' + auth0Client.getProfile().sub);
     };
 
     const signOut = () => {
@@ -17,8 +17,19 @@ export class NavBar extends Component {
     return (
       <nav className="navbar is-dark">
         <div className="navbar-brand">
-          <div className="navbar-burger burger" data-target="navMenuColorprimary-example">
-            <span />
+          <div className="is-hidden-desktop">
+            {auth0Client.isAuthenticated() && (
+              <div className="navbar-start">
+                <a
+                  className="navbar-item titleText has-text-white"
+                  onClick={() => {
+                    goHome();
+                  }}
+                >
+                  Shopify Dashbaord
+                </a>
+              </div>
+            )}
             <span />
             <span />
           </div>

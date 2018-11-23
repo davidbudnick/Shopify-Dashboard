@@ -29,7 +29,7 @@ export class NewProject extends Component {
     };
 
     this.props.createPost(project);
-    this.props.history.replace('/profile/' + this.props.match.params.id);
+    this.props.history.replace('/' + this.props.match.params.id);
   }
 
   render() {

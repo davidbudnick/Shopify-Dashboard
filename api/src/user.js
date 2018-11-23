@@ -112,4 +112,4 @@ module.exports.findAllUsers = findAllUsers;
 module.exports.getUser = getUser;
 module.exports.createProject = createProject;
 module.exports.getProject = getProject;
-module.exports.getProjects = getProjects;
+// module.exports.getProjects = getProjects;

@@ -1,13 +1,13 @@
 import { GET_USER, CREATE_PROJECT } from './types';
-import axios from 'axios';
-
 export const getUser = (userid) => (dispatch) => {
-  axios.get(`http://localhost:4000/user/${userid}`).then((user) => {
-    dispatch({
-      type: GET_USER,
-      payload: user.data,
-    });
-  });
+  fetch(`http://localhost:4000/user/${userid}`)
+    .then((res) => res.json())
+    .then((project) =>
+      dispatch({
+        type: GET_USER,
+        payload: project,
+      }),
+    );
 };
 
 export const createProject = (userId, projectData) => (dispatch) => {

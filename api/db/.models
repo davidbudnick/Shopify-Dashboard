@@ -1,4 +1,9 @@
-yarn sq model:generate --name User --attributes userId:string,firstName:string,lastName:string,fullName:string,nickName:string,picture:string,projects:json
+yarn sq model:generate --name User --attributes userId:string,firstName:string,lastName:string,fullName:string,nickName:string,picture:string
+yarn sq model:generate --name Project --attributes userId:string,name:string,apiKey:string,password:string,domain:string
+
+
+
+
 
 
 //PROJECTS JSON

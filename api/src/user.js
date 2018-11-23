@@ -26,7 +26,7 @@ async function addUser(profile) {
       picture: profile.picture,
       projects: [],
     }).catch((err) => {
-      logger.err('Error creating the user in the db', err);
+      logger.error('Error creating the user in the db', err);
     });
   }
 

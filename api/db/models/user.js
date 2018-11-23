@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
       fullName: DataTypes.STRING,
       nickName: DataTypes.STRING,
       picture: DataTypes.STRING,
-      projects: DataTypes.JSON(DataTypes.STRING),
     },
     {},
   );

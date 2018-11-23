@@ -1,0 +1,46 @@
+{
+    "tables": {
+        "Users": {
+            "tableName": "Users",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "userId": {
+                    "seqType": "Sequelize.STRING"
+                },
+                "firstName": {
+                    "seqType": "Sequelize.STRING"
+                },
+                "lastName": {
+                    "seqType": "Sequelize.STRING"
+                },
+                "fullName": {
+                    "seqType": "Sequelize.STRING"
+                },
+                "nickName": {
+                    "seqType": "Sequelize.STRING"
+                },
+                "picture": {
+                    "seqType": "Sequelize.STRING"
+                },
+                "projects": {
+                    "seqType": "Sequelize.JSON"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "revision": 1
+}

@@ -9,6 +9,28 @@ class Projects extends Component {
     this.props.getUser(this.props.match.params.id);
   }
   render() {
+    let obj = JSON.stringify(this.props.user);
+
+    // Object.values(this.props.user.projects).map((project) => {
+    //   <div className="column is-narrow">
+    //     <Link to={{ pathname: this.props.user.userId + '/project/' + project }}>
+    //       <div className="box has-text-centered addBox ml mt">
+    //         <div className="projectTitle text is-size-3">Test Store</div>
+    //       </div>
+    //     </Link>
+    //   </div>;
+    // });
+
+    const projectsItems = obj.map((project) => (
+      <div className="column is-narrow">
+        <Link to={{ pathname: this.props.user.userId + '/project/' + project.id }}>
+          <div className="box has-text-centered addBox ml mt">
+            <div className="projectTitle text is-size-3">Test Store</div>
+          </div>
+        </Link>
+      </div>
+    ));
+
     return (
       <div className="container mt">
         <div className="columns is-multiline">
@@ -20,13 +42,8 @@ class Projects extends Component {
               </div>
             </Link>
           </div>
-          <div className="column is-narrow">
-            <Link to={{ pathname: this.props.user.userId + '/project/' + '1' }}>
-              <div className="box has-text-centered addBox ml mt">
-                <div className="projectTitle text is-size-3">Test Store</div>
-              </div>
-            </Link>
-          </div>
+          {/* {JSON.stringify(this.props.user.projects)} */}
+          {/* {projectsItems} */}
         </div>
       </div>
     );
@@ -34,6 +51,7 @@ class Projects extends Component {
 }
 Projects.propTypes = { getUser: propTypes.func.isRequired };
 const mapStateToProps = (state) => ({ user: state.user.user });
+
 export default connect(
   mapStateToProps,
   { getUser },

@@ -18,6 +18,7 @@ async function createProject(apiKey, password, domain, name, userId) {
     logger.error('There was an error creating this project', err);
   });
 
+  //Returns created project data
   return projectData;
 }
 
@@ -32,6 +33,7 @@ async function getProject(projectId) {
     logger.error('There was an error finding the project', err);
   });
 
+  //Returns on project from db
   return projectData;
 }
 

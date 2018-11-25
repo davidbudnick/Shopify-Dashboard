@@ -14,21 +14,27 @@ app.use((req, res, next) => {
   next();
 });
 app.use(cors());
+
+//Body Parser config
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //Routers
 const products = require('./src/routes/products');
 const user = require('./src/routes/user');
+const projects = require('./src/routes/projects');
 
 //Using Routes
 app.use('/products', products);
 app.use('/user', user);
+app.use('projects', projects);
 
+//Base route
 app.get('/', (req, res) => {
   res.send('Route Active: 🤖');
 });
 
+//Logs what port the api server is running on
 app.listen(port, () => {
   logger.info(`The server is running on port => ${port}`);
 });

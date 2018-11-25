@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const pino = require('pino');
+const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
 const projects = require('../projects');
 
 //Creates a project in the user project json object
@@ -26,9 +28,11 @@ router.get('/project/:projectId', async (req, res, next) => {
 
 //Send user Id and get all project that are that user project from the db
 router.get('/projects/:userId', async (req, res, next) => {
+  //Waits for the req params to load
+  let userId = await req.params.userId;
   //Gets all projects by userId
-  let projectData = await projects.getProjects(req.parms.userId);
-  //Sends all project data back to the user
+  let projectData = await projects.getProjects(userId);
+  // //Sends all project data back to the user
   res.send(projectData);
 });
 

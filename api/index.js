@@ -27,7 +27,7 @@ const projects = require('./src/routes/projects');
 //Using Routes
 app.use('/products', products);
 app.use('/user', user);
-app.use('projects', projects);
+app.use('/projects', projects);
 
 //Base route
 app.get('/', (req, res) => {

@@ -6,7 +6,7 @@ import propTypes from 'prop-types';
 import temp from '../img/temp.jpg';
 class Products extends Component {
   componentWillMount() {
-    this.props.getProducts();
+    this.props.getProducts(this.props.match.params.id);
   }
   render() {
     const productItems = this.props.products.map((product) => (

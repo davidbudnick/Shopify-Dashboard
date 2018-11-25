@@ -20,7 +20,7 @@ export default function(state = initailState, action) {
     case CREATE_PROJECT:
       return {
         ...state,
-        project: action.payload,
+        projects: action.payload,
       };
     default:
       return state;

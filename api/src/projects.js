@@ -7,7 +7,7 @@ const uniqid = require('uniqid');
 //Creates a project by userId
 async function createProject(apiKey, password, domain, name, userId) {
   let projectId = uniqid('project-');
-  projectData = await db.Project.create({
+  let projectData = await db.Project.create({
     projectId: projectId,
     userId: userId,
     name: name,
@@ -18,8 +18,19 @@ async function createProject(apiKey, password, domain, name, userId) {
     logger.error('There was an error creating this project', err);
   });
 
-  //Returns created project data
-  return projectData;
+  logger.info(JSON.stringify(projectData));
+
+  //find all projects to send back
+  let projectsData = await db.Project.findAll({
+    where: {
+      userId: userId,
+    },
+  }).catch((err) => {
+    logger.error('The projects could not be found in the db', err);
+  });
+
+  //Returns all projects in the db
+  return projectsData;
 }
 
 //Gets a single project by projectId from the db by projectId
@@ -40,7 +51,7 @@ async function getProject(projectId) {
 //Gets all project that user has under there userid
 async function getProjects(userId) {
   //Finds all in the db
-  let projectData = await db.User.findAll({
+  let projectData = await db.Project.findAll({
     where: {
       userId: userId,
     },

@@ -13,7 +13,7 @@ class Products extends Component {
   render() {
     const productItems = this.props.products.map((product) => (
       <div key={product.id} className="column is-narrow">
-        <div className="card ">
+        <div className="card product_cards ">
           <div className="card-image">
             <figure className="image is-3by2">
               <img alt={product.created_at} src={product.image ? product.image.src : temp} />

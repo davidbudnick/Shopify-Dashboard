@@ -8,6 +8,7 @@ import 'bulma/css/bulma.css';
 import Projects from './components/elements/Projects';
 import NewProject from './components/elements/NewProject';
 import Project from './components/pages/Project';
+import Settings from './components/elements/Settings';
 
 class App extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class App extends Component {
             <Route exact path="/profile/:id" component={Projects} />
             <Route exact path="/newProject/:id" component={NewProject} />
             <Route exact path="/project/:projectId/dashboard" component={Project} />
+            <Route exact path="/project/:projectId/settings" component={Settings} />
             <Route exact path="/callback" component={Callback} />
             <Route component={NotFound} />
           </Switch>

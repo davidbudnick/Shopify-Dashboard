@@ -7,7 +7,7 @@ const projects = require('../projects');
 //returns all the projects from the db
 router.get('/', async (req, res, next) => {
   let projectData = await projects.getAllProjects();
-  return projectData;
+  res.send(projectData);
 });
 
 //Creates a project in the user project json object

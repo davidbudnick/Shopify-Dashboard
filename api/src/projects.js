@@ -70,6 +70,8 @@ async function getAllProjects() {
     logger.error('All projects could not be found in db', err);
   });
 
+  logger.info(projectData);
+
   return projectData;
 }
 

@@ -10,8 +10,8 @@ class Projects extends Component {
   }
   render() {
     const projectItems = this.props.projects.map((project) => (
-      <div key="{product.id}" className="column is-narrow">
-        <Link to={{ pathname: '/project/' + project.projectId }}>
+      <div key={project.id} className="column is-narrow">
+        <Link to={{ pathname: `/project/${project.userId}/${project.projectId}` }}>
           <div className="box has-text-centered addBox ml mt">
             <div className="projectTitle text is-size-3">{project.name}</div>
             <div> {project.domain}</div>
@@ -24,7 +24,7 @@ class Projects extends Component {
       <div className="container mt">
         <div className="columns is-multiline">
           <div className="column is-narrow">
-            <Link to={{ pathname: '/newProject/' + this.props.match.params.id }}>
+            <Link to={{ pathname: `/newProject/${this.props.match.params.id}` }}>
               <div className="box has-text-centered addBox ml mt">
                 <i className="fas fa-plus is-size-3 newProject" />
                 <p className="mb is-size-5 has-text-weight-bold	">Add your shopify store</p>

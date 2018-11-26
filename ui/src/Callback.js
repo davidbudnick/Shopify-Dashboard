@@ -5,7 +5,6 @@ import auth0Client from './Auth';
 class Callback extends Component {
   async componentDidMount() {
     await auth0Client.handleAuthentication();
-    this.props.history.replace('/' + auth0Client.getProfile().sub);
   }
 
   render() {

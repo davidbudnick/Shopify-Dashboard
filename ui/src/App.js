@@ -36,7 +36,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/:id" component={Projects} />
             <Route exact path="/newProject/:id" component={NewProject} />
-            <Route exact path="/project/:projectId" component={Project} />
+            <Route exact path="/project/:projectId/dashboard" component={Project} />
             <Route exact path="/callback" component={Callback} />
             <Route component={NotFound} />
           </Switch>

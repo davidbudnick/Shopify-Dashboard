@@ -1,40 +1,42 @@
 const express = require('express');
 const router = express.Router();
 const products = require('../products');
-const pino = require('pino');
-const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
+// const pino = require('pino');
+// const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
 
-//Get all products
-router.get('/', async (req, res, next) => {
-  productData = await products.getProducts();
+//Get all products from shopify
+router.get('/:projdctId', async (req, res, next) => {
+  productData = await products.getProducts(req.params.projectId);
   res.send(productData);
 });
 
-//Get one product
-router.get('/:id', async (req, res) => {
-  productData = await products.getProduct(req.params.id);
+//Get one product from shopify
+router.get('/:projectId/:id', async (req, res) => {
+  productData = await products.getProduct(req.params.projectId, req.params.id);
   res.send(productData);
 });
 
-//Delete all products
-router.get('/deleteAll', async (req, res, next) => {
-  productData = await products.deleteAllProducts();
-  res.send('All products deleted');
+//Delete all products from shopify
+router.get('/deleteAll/:projectId', async (req, res, next) => {
+  let productData = await products.deleteAllProducts(req.params.projectId);
+  res.send(productData);
 });
 
-//Delete one product
-router.get('/delete/:id', async (req, res, next) => {
-  productData = await products.deleteProduct(req.params.id);
-  res.send(`${req.params.id} deleted`);
+//Delete one product from shopify
+router.get('/delete/:projectId/:id', async (req, res, next) => {
+  let productData = await products.deleteProduct(req.params.projectId, req.params.id);
+  res.send(productData);
 });
 
-//add a product
-router.post('/add', async (req, res, next) => {
-  let title = req.body.title;
-  let vendor = req.body.vendor;
-  let product_type = req.body.product_type;
-  let image_url = req.body.image_url;
-  let productData = await products.addProduct(title, vendor, product_type, image_url);
+//add a product to shopify
+router.post('/add/:projectId', async (req, res, next) => {
+  let productData = await products.addProduct(
+    req.params.projectId,
+    req.body.title,
+    req.body.vendor,
+    req.body.product_type,
+    req.body.image_url,
+  );
   res.send(productData);
 });
 

@@ -8,14 +8,11 @@ import propTypes from 'prop-types';
 import temp from '../img/temp.jpg';
 class Products extends Component {
   componentWillMount() {
-    console.log(this.props);
-    console.log('hey');
-
-    this.props.getProducts(this.props.match.params.projectId);
+    this.props.getProducts(this.props.projectId);
   }
   render() {
     const productItems = this.props.products.map((product) => (
-      <div key="{product.id}" className="column is-2">
+      <div key={product.id} className="column is-2">
         <div className="card ">
           <div className="card-image">
             <figure className="image is-3by2">
@@ -31,14 +28,14 @@ class Products extends Component {
             </div>
             {/* <div className="content">{product.body_html}</div> */}
           </div>
-          <footer class="card-footer">
-            <Link to={{ pathname: '/product/view/' + product.id }} class="card-footer-item">
+          <footer className="card-footer">
+            <Link to={{ pathname: '/product/view/' + product.id }} className="card-footer-item">
               View
             </Link>
-            <Link to={{ pathname: '/product/edit/' + product.id }} class="card-footer-item">
+            <Link to={{ pathname: '/product/edit/' + product.id }} className="card-footer-item">
               Edit
             </Link>
-            <Link to={{ pathname: '/product/delete/' + product.id }} class="card-footer-item">
+            <Link to={{ pathname: '/product/delete/' + product.id }} className="card-footer-item">
               Delete
             </Link>
           </footer>
@@ -46,8 +43,8 @@ class Products extends Component {
       </div>
     ));
     return (
-      <div className="mt mr ml">
-        <div className="columns is-moblie is-multiline">{productItems}</div>
+      <div className="mt mr">
+        <div className="columns is-multiline">{productItems}</div>
       </div>
     );
   }

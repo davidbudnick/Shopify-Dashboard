@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom';
-// import Home from './components/pages/Home';
 import Callback from './Callback';
 import auth0Client from './Auth';
-// import SecuredRoute from './components/elements/SecuredRoute';
 import NavBar from './components/elements/NavBar';
 import NotFound from './components/pages/NotFound';
 import 'bulma/css/bulma.css';
-// import Posts from './components/elements/Posts';
 import Projects from './components/elements/Projects';
 import NewProject from './components/elements/NewProject';
+import Project from './components/elements/Project';
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +36,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/:id" component={Projects} />
             <Route exact path="/newProject/:id" component={NewProject} />
+            <Route exact path="/project/:projectId" component={Project} />
             <Route exact path="/callback" component={Callback} />
             <Route component={NotFound} />
           </Switch>

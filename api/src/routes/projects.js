@@ -4,6 +4,12 @@ const pino = require('pino');
 const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
 const projects = require('../projects');
 
+//returns all the projects from the db
+router.get('/', async (req, res, next) => {
+  let projectData = await projects.getAllProjects();
+  return projectData;
+});
+
 //Creates a project in the user project json object
 router.post('/newProject/:userId', async (req, res, next) => {
   //This should recieve a json object with the new project

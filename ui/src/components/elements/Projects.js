@@ -9,25 +9,16 @@ class Projects extends Component {
     this.props.getProjects(this.props.match.params.id);
   }
   render() {
-    // Object.values(this.props.user.projects).map((project) => {
-    //   <div className="column is-narrow">
-    //     <Link to={{ pathname: this.props.user.userId + '/project/' + project }}>
-    //       <div className="box has-text-centered addBox ml mt">
-    //         <div className="projectTitle text is-size-3">Test Store</div>
-    //       </div>
-    //     </Link>
-    //   </div>;
-    // });
-
-    // const projectsItems = obj.map((project) => (
-    //   <div className="column is-narrow">
-    //     <Link to={{ pathname: this.props.user.userId + '/project/' + project.id }}>
-    //       <div className="box has-text-centered addBox ml mt">
-    //         <div className="projectTitle text is-size-3">Test Store</div>
-    //       </div>
-    //     </Link>
-    //   </div>
-    // ));
+    const projectItems = this.props.projects.map((project) => (
+      <div key="{product.id}" className="column is-narrow">
+        <Link to={{ pathname: '/project/' + project.projectId }}>
+          <div className="box has-text-centered addBox ml mt">
+            <div className="projectTitle text is-size-3">{project.name}</div>
+            <div> {project.domain}</div>
+          </div>
+        </Link>
+      </div>
+    ));
 
     return (
       <div className="container mt">
@@ -40,8 +31,7 @@ class Projects extends Component {
               </div>
             </Link>
           </div>
-          {/* {JSON.stringify(this.props.user.projects)} */}
-          {/* {projectsItems} */}
+          {projectItems}
         </div>
       </div>
     );

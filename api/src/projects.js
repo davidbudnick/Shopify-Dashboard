@@ -63,6 +63,17 @@ async function getProjects(userId) {
   return projectData;
 }
 
+//Gets all projects in db
+//TODO: Remove for production
+async function getAllProjects() {
+  let projectData = await db.Project.findAll().catch((err) => {
+    logger.error('All projects could not be found in db', err);
+  });
+
+  return projectData;
+}
+
 module.exports.createProject = createProject;
 module.exports.getProject = getProject;
 module.exports.getProjects = getProjects;
+module.exports.getAllProjects = getAllProjects;

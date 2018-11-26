@@ -11,7 +11,7 @@ class Projects extends Component {
   render() {
     const projectItems = this.props.projects.map((project) => (
       <div key={project.id} className="column is-narrow">
-        <Link to={{ pathname: `/project/${project.userId}/${project.projectId}` }}>
+        <Link to={{ pathname: `/project/${project.projectId}` }}>
           <div className="box has-text-centered addBox ml mt">
             <div className="projectTitle text is-size-3">{project.name}</div>
             <div> {project.domain}</div>

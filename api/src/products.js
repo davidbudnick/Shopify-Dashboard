@@ -2,49 +2,79 @@ require('dotenv').config();
 const axios = require('axios');
 const pino = require('pino');
 const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
-//Shopify NodeAPI
-// const shopify = require('shopify-api-node');
 
-//Shpoify Config
-const shopURL = process.env.SHOPIFY_DOMAIN;
+//Get all products from shopify
+async function getProducts(projectId) {
+  //Query DB from apiKey, Store Domain, and Password
+  let projectInfo = await db.Project.findOne({
+    where: {
+      projectId: projectId,
+    },
+  }).catch((err) => {
+    logger.error(`There was an error looking up the project ID -> ${projectId}`, err);
+  });
 
-//Get all products
-async function getProducts() {
-  let url = `${shopURL}products.json`;
-  logger.info(url);
+  //Format the domain to query all the projects in shopify
+  let url = `${projectInfo.domain}admin/products.json`;
 
+  //Query all the products in shopify
   let response = await axios({
     method: 'get',
     url,
     auth: {
-      username: process.env.SHOPIFY_API_KEY,
-      password: process.env.SHOPIFY_PASSWORD,
+      username: projectInfo.apiKey,
+      password: projectInfo.password,
     },
-  }).catch((error) => {
-    logger.error(error);
+  }).catch((err) => {
+    logger.error('There was an error finding the products in shopify', err);
   });
+
+  //Return all the products
   return response.data.products;
 }
 
 //Get product
-async function getProduct(productId) {
-  let url = `${shopURL}products/${productId}.json`;
+async function getProduct(projectId, productId) {
+  //Query DB from apiKey, Store Domain, and Password
+  let projectInfo = await db.Project.findOne({
+    where: {
+      projectId: projectId,
+    },
+  }).catch((err) => {
+    logger.error(`There was an error looking up the project ID -> ${projectId}`, err);
+  });
 
+  //Create url to find one product in shopify
+  let url = `${projectInfo.domain}admin/products/${productId}.json`;
+
+  //Query all the products in shopify
   let response = await axios({
     method: 'get',
     url,
     auth: {
-      username: process.env.SHOPIFY_API_KEY,
-      password: process.env.SHOPIFY_PASSWORD,
+      username: projectInfo.apiKey,
+      password: projectInfo.password,
     },
-  }).catch((error) => {
-    logger.error(error);
+  }).catch((err) => {
+    logger.error('There was an error finding the product in shopify', err);
   });
+
+  //Return one product
   return response.data.product;
 }
 
 //Add product
-async function addProduct(title, vendor, product_type, image_url) {
+async function addProduct(projectId, title, vendor, product_type, image_url) {
+  //Query DB from apiKey, Store Domain, and Password
+  let projectInfo = await db.Project.findOne({
+    where: {
+      projectId: projectId,
+    },
+  }).catch((err) => {
+    logger.error(`There was an error looking up the project ID -> ${projectId}`, err);
+  });
+
+  //Create the JSON object for shopify
   let data = {
     product: {
       title: title,
@@ -58,58 +88,86 @@ async function addProduct(title, vendor, product_type, image_url) {
     },
   };
 
-  let url = `${shopURL}products.json`;
+  //Creates the url for adding a product in shopify
+  let url = `${projectInfo.shopURL}admin/products.json`;
   let response = await axios({
     method: 'post',
     data,
     url,
     auth: {
-      username: process.env.SHOPIFY_API_KEY,
-      password: process.env.SHOPIFY_PASSWORD,
+      username: projectInfo.apiKey,
+      password: projectInfo.password,
     },
-  }).catch((error) => {
-    logger.error(error);
+  }).catch((err) => {
+    logger.error('There was an error creating the project in shopify', err);
   });
 
+  //sends back the updated product in shopify
   logger.info(JSON.stringify(response.data));
 }
 
 //Delete one product
-async function deleteProduct(id) {
-  let url = `${shopURL}/products/${id}.json`;
+async function deleteProduct(projectId, productId) {
+  //Query DB from apiKey, Store Domain, and Password
+  let projectInfo = await db.Project.findOne({
+    where: {
+      projectId: projectId,
+    },
+  }).catch((err) => {
+    logger.error(`There was an error looking up the project ID -> ${projectId}`, err);
+  });
+
+  //Creates url for delete product in shopify
+  let url = `${projectInfo.shopURL}admin/products/${productId}.json`;
+
+  //Deletes product in shopify
   let response = await axios({
     method: 'delete',
     url,
     auth: {
-      username: process.env.SHOPIFY_API_KEY,
-      password: process.env.SHOPIFY_PASSWORD,
+      username: projectInfo.apiKey,
+      password: projectInfo.password,
     },
-  }).catch((error) => {
-    logger.error(error);
+  }).catch((err) => {
+    logger.error('There was an error deleting the product in shopify', err);
   });
-  return 'Product Deleted';
+
+  //Returns that project has been deleted
+  return `The product has been deleted from shopify`, response;
 }
 
-//Delete all products
-async function deleteAllProducts() {
-  let url = `${shopURL}products.json`;
-  logger.info(url);
+//Delete all products - DANGER DANGER :)
+async function deleteAllProducts(projectId) {
+  let projectInfo = await db.Project.findOne({
+    where: {
+      projectId: projectId,
+    },
+  }).catch((err) => {
+    logger.error(`There was an error looking up the project ID -> ${projectId}`, err);
+  });
+
+  let url = `${projectInfo.shopURL}admin/products.json`;
 
   let response = await axios({
     method: 'get',
     url,
     auth: {
-      username: process.env.SHOPIFY_USERNAME,
-      password: process.env.SHOPIFY_PASSWORD,
+      username: projectInfo.apiKey,
+      password: projectInfo.password,
     },
-  }).catch((error) => {
-    logger.error(error);
+  }).catch((err) => {
+    logger.error(
+      'There was an error finding all the product in shpoify. Being used to delete all the product in shopify',
+      err,
+    );
   });
 
   for (let index = 0; index < response.data.products.length; index++) {
     let productId = response.data.products[index].id;
     deleteProduct(productId);
   }
+
+  return 'All products have been deleted from shopify', response;
 }
 
 module.exports.addProduct = addProduct;

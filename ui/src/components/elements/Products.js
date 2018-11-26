@@ -1,4 +1,6 @@
-/* eslint-disable*/ import React, { Component } from 'react';
+/* eslint-disable*/
+
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getProducts } from '../../actions/shopifyActions';
 import { Link } from 'react-router-dom';
@@ -6,7 +8,10 @@ import propTypes from 'prop-types';
 import temp from '../img/temp.jpg';
 class Products extends Component {
   componentWillMount() {
-    this.props.getProducts(this.props.match.params.id);
+    console.log(this.props);
+    console.log('hey');
+
+    this.props.getProducts(this.props.match.params.projectId);
   }
   render() {
     const productItems = this.props.products.map((product) => (

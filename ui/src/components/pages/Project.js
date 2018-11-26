@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import Products from '../elements/Products';
 
 export class Project extends Component {
   render() {
-    return <div />;
+    return (
+      <div>
+        <Products />;
+      </div>
+    );
   }
 }
 

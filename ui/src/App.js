@@ -34,7 +34,7 @@ class App extends Component {
         <header className="App-header">
           <NavBar />
           <Switch>
-            <Route exact path="/:id" component={Projects} />
+            <Route exact path="/profile/:id" component={Projects} />
             <Route exact path="/newProject/:id" component={NewProject} />
             <Route exact path="/project/:projectId/dashboard" component={Project} />
             <Route exact path="/callback" component={Callback} />

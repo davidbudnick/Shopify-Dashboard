@@ -5,7 +5,7 @@ const products = require('../products');
 // const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
 
 //Get all products from shopify
-router.get('/:projdctId', async (req, res, next) => {
+router.get('/:projectId', async (req, res, next) => {
   productData = await products.getProducts(req.params.projectId);
   res.send(productData);
 });

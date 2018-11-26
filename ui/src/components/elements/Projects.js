@@ -1,15 +1,13 @@
-/* eslint-disable*/ import React, { Component } from 'react';
+/* eslint-disable*/
+
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getProjects } from '../../actions/projectActions';
 import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import auth0Client from '../../Auth';
 
 class Projects extends Component {
-  async componentWillMount() {
-    await auth0Client.handleAuthentication();
-
-    this.props.history.replace('/' + auth0Client.getProfile().sub);
+  componentWillMount() {
     this.props.getProjects(this.props.match.params.id);
   }
   render() {

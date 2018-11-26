@@ -6,7 +6,7 @@ import { Link, withRouter } from 'react-router-dom';
 export class NavBar extends Component {
   render() {
     const goHome = () => {
-      this.props.history.replace('/' + auth0Client.getProfile().sub);
+      this.props.history.replace('/profile/' + auth0Client.getProfile().sub);
     };
 
     const signOut = () => {

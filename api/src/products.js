@@ -2,6 +2,7 @@ require('dotenv').config();
 const axios = require('axios');
 const pino = require('pino');
 const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
+const db = require('../db');
 
 //Get all products from shopify
 async function getProducts(projectId) {

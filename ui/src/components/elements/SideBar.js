@@ -23,21 +23,44 @@ export class SideBar extends Component {
         </ul>
         <ul className="menu-list">
           <li>
-            <a>Authentication</a>
+            <Link
+              to={{ pathname: `/project/${this.props.projectId}/projects` }}
+              className={pageName === 'projects' ? 'is-active' : ''}
+            >
+              Projects
+            </Link>
           </li>
         </ul>
-        <p className="menu-label">Transactions</p>
+        <p className="menu-label">Tools</p>
+        <ul className="menu-list">
+          <li>
+            <Link
+              to={{ pathname: `/project/${this.props.projectId}/backups` }}
+              className={pageName === 'backups' ? 'is-active' : ''}
+            >
+              Backup Project
+            </Link>
+          </li>
+        </ul>
+        <ul className="menu-list">
+          <li>
+            <Link
+              to={{ pathname: `/project/${this.props.projectId}/transfer` }}
+              className={pageName === 'transfer' ? 'is-active' : ''}
+            >
+              Transfer Products
+            </Link>
+          </li>
+        </ul>
+        <p className="menu-label">Store Settings</p>
         <ul className="menu-list">
           <li>
             <Link
               to={{ pathname: `/project/${this.props.projectId}/settings` }}
               className={pageName === 'settings' ? 'is-active' : ''}
             >
-              Store Settings
+              Project Settings
             </Link>
-          </li>
-          <li>
-            <a>Refresh</a>
           </li>
         </ul>
       </aside>

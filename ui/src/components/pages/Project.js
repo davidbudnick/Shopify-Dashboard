@@ -7,7 +7,7 @@ export class Project extends Component {
 
   render() {
     return (
-      <div className="columns">
+      <div className="columns ">
         <div className="column is-narrow">
           <SideBar projectId={this.props.match.params.projectId} history={this.props.match} />
         </div>

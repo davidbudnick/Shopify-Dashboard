@@ -23,11 +23,13 @@ app.use(bodyParser.json());
 const products = require('./src/routes/products');
 const user = require('./src/routes/user');
 const projects = require('./src/routes/projects');
+const backups = require('./src/routes/backups');
 
 //Using Routes
 app.use('/products', products);
 app.use('/user', user);
 app.use('/projects', projects);
+app.user('/backups', backups);
 
 //Base route
 app.get('/', (req, res) => {

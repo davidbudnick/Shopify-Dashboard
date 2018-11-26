@@ -6,13 +6,13 @@ const products = require('../products');
 
 //Get all products from shopify
 router.get('/:projectId', async (req, res, next) => {
-  productData = await products.getProducts(req.params.projectId);
+  let productData = await products.getProducts(req.params.projectId);
   res.send(productData);
 });
 
 //Get one product from shopify
 router.get('/:projectId/:id', async (req, res) => {
-  productData = await products.getProduct(req.params.projectId, req.params.id);
+  let productData = await products.getProduct(req.params.projectId, req.params.id);
   res.send(productData);
 });
 

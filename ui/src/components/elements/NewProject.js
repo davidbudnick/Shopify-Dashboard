@@ -31,7 +31,7 @@ export class NewProject extends Component {
     };
 
     this.props.createProject(this.props.match.params.id, projectData);
-    this.props.history.replace('/' + this.props.match.params.id);
+    this.props.history.replace('/profile/' + this.props.match.params.id);
   }
 
   render() {

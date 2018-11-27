@@ -69,5 +69,18 @@ async function start(projectId) {
   return allBackupData;
 }
 
+//Finds one backup in the database and sends the backup data
+async function backup(backupId) {
+  let backupData = db.Backup.findOne({
+    where: {
+      backupId: backupId,
+    },
+  });
+
+  //Returns the backup data
+  return backupData;
+}
+
 module.exports.getBackups = getBackups;
 module.exports.start = start;
+module.exports.backup = backup;

@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Backup = sequelize.define(
     'Backup',
     {
-      name: DataTypes.STRING,
+      backupId: DataTypes.STRING,
       userId: DataTypes.STRING,
       products: DataTypes.JSON(DataTypes.STRING),
     },

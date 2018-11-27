@@ -80,16 +80,32 @@ async function start(projectId) {
 
 //Finds one backup in the database and sends the backup data
 async function backup(backupId) {
-  let backupData = db.Backup.findOne({
+  let backupData = await db.Backup.findOne({
     where: {
       backupId: backupId,
     },
+  }).catch((err) => {
+    logger.error('There was an error finding the backup in the database', err);
   });
 
   //Returns the backup data
   return backupData;
 }
 
+//Finds one backup in the database and sends just product data
+async function download(backupId) {
+  let backupData = await db.Backup.findOne({
+    where: {
+      backupId: backupId,
+    },
+  }).catch((err) => {
+    logger.error('There was an error finding the backup in the database', err);
+  });
+
+  return backupData.products;
+}
+
 module.exports.getBackups = getBackups;
 module.exports.start = start;
 module.exports.backup = backup;
+module.exports.download = download;

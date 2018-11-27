@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const backups = require('../backups');
 const fs = require('fs');
-// const pino = require('pino');
-// const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
+const pino = require('pino');
+const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
 
 //Gets all the backups in the db
 router.get('/:projectId', async (req, res, next) => {
@@ -23,4 +23,15 @@ router.get('/backup/:backupId', async (req, res, next) => {
   res.send(backupData);
 });
 
+//sends the backup as a file to the user
+router.get('/download/:backupId', async (req, res, next) => {
+  //Query the database for the backup file
+  let backupData = await backups.download(req.params.backupId);
+
+  fs.writeFileSync(`temp/${req.params.backupId}.json`, JSON.stringify(backupData), (err) => {
+    if (err) throw err;
+  });
+
+  res.download(`./temp/${req.params.backupId}.json`);
+});
 module.exports = router;

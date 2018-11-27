@@ -18,7 +18,7 @@ export class SideBar extends Component {
             </Link>
           </li>
         </ul>
-        <ul className="menu-list">
+        {/* <ul className="menu-list">
           <li>
             <Link
               to={{ pathname: `/project/${this.props.projectId}/projects` }}
@@ -27,7 +27,7 @@ export class SideBar extends Component {
               Projects
             </Link>
           </li>
-        </ul>
+        </ul> */}
         <p className="menu-label">Tools</p>
         <ul className="menu-list">
           <li>

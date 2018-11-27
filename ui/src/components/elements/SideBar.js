@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 export class SideBar extends Component {
-  componentWillMount() {
-    console.log(this.props);
-  }
   render() {
     let pageName = this.props.history.path.substring(20);
 

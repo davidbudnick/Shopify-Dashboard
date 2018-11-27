@@ -6,11 +6,20 @@ const db = require('../db');
 const uniqid = require('uniqid');
 
 //Gets all the backup from the databse
-async function getBackups(userId) {
+async function getBackups(projectId) {
+  //Query DB from apiKey, Store Domain, and Password
+  let projectInfo = await db.Project.findOne({
+    where: {
+      projectId: projectId,
+    },
+  }).catch((err) => {
+    logger.error(`There was an error looking up the project ID -> ${projectId}`, err);
+  });
+
   //Query database for all backup for current user
   let backupData = await db.Backup.findAll({
     where: {
-      userId: userId,
+      userId: projectInfo.userId,
     },
   });
 
@@ -20,6 +29,9 @@ async function getBackups(userId) {
 
 //Create a backup of the shopify products in the database
 async function start(projectId) {
+  //Creates unique name for backup
+  let backupId = uniqid('backup-');
+
   //Query DB from apiKey, Store Domain, and Password
   let projectInfo = await db.Project.findOne({
     where: {
@@ -44,12 +56,9 @@ async function start(projectId) {
     logger.error('There was an error finding the products in shopify', err);
   });
 
-  //Creates unique name for backup
-  let backupId = uniqid('backup-');
-
   //Creates the backup in the databse
   let backupData = await db.Backup.create({
-    name: backupId,
+    backupId: backupId,
     userId: projectInfo.userId,
     products: response.data.products,
   }).catch((err) => {

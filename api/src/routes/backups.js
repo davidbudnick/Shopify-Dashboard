@@ -6,8 +6,8 @@ const fs = require('fs');
 // const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
 
 //Gets all the backups in the db
-router.get('/:userId', async (req, res, next) => {
-  let backupData = await backups.getBackups(req.params.userId);
+router.get('/:projectId', async (req, res, next) => {
+  let backupData = await backups.getBackups(req.params.projectId);
   res.send(backupData);
 });
 

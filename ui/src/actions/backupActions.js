@@ -1,7 +1,7 @@
 import { CREATE_BACKUP, GET_BACKUPS, GET_BACKUP } from './types';
 
-export const getBackups = (userId) => (dispatch) => {
-  fetch(`http://localhost:4000/backups/${userId}`)
+export const getBackups = (projectId) => (dispatch) => {
+  fetch(`http://localhost:4000/backups/${projectId}`)
     .then((res) => res.json())
     .then((backups) => {
       dispatch({

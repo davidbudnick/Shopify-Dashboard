@@ -19,7 +19,7 @@ export class Backups extends Component {
         <td>{backup.userId}</td>
         <td>
           <Link to={{ pathname: `/project/${this.props.match.params.projectId}/backups/backup/${backup.backupId}` }}>
-            Download
+            View
           </Link>
         </td>
         <td>

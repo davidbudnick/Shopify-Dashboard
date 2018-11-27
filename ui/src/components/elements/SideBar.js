@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export class SideBar extends Component {
   render() {
-    let pageName = this.props.history.path.substring(20);
+    let pageName = this.props.history ? this.props.history.path.substring(20) : '';
 
     return (
       <aside className="menu ml mt sidebar">

@@ -23,7 +23,7 @@ export const createBackup = (projectId) => (dispatch) => {
 };
 
 export const getBackup = (backupId) => (dispatch) => {
-  fetch(`https://localhost:4000/backups/backup/${backupId}`)
+  fetch(`http://localhost:4000/backups/backup/${backupId}`)
     .then((res) => res.json())
     .then((backup) => {
       dispatch({

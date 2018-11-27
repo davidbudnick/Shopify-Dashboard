@@ -7,8 +7,11 @@ import NotFound from './components/pages/NotFound';
 import 'bulma/css/bulma.css';
 import Projects from './components/elements/Projects';
 import NewProject from './components/elements/NewProject';
-import Project from './components/pages/Project';
 import Settings from './components/elements/Settings';
+import Backups from './components/elements/Backups';
+import Transfer from './components/elements/Transfer';
+// import Products from './components/elements/Products';
+import Product from './components/pages/Project';
 
 class App extends Component {
   constructor(props) {
@@ -37,8 +40,11 @@ class App extends Component {
           <Switch>
             <Route exact path="/profile/:id" component={Projects} />
             <Route exact path="/newProject/:id" component={NewProject} />
-            <Route exact path="/project/:projectId/dashboard" component={Project} />
+            <Route exact path="/project/:projectId/dashboard" component={Product} />
+            {/* <Route exact path="/project/:projectId/projects" component={Products} /> */}
             <Route exact path="/project/:projectId/settings" component={Settings} />
+            <Route exact path="/project/:projectId/backups" component={Backups} />
+            <Route exact path="/project/:projectId/transfer" component={Transfer} />
             <Route exact path="/callback" component={Callback} />
             <Route component={NotFound} />
           </Switch>

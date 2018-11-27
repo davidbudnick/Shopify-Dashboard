@@ -5,12 +5,23 @@ import { getBackup } from '../../actions/backupActions';
 import propTypes from 'prop-types';
 import Moment from 'react-moment';
 import JSONTree from 'react-json-tree';
+import axios from 'axios';
 
 export class Backup extends Component {
   componentWillMount() {
     this.props.getBackup(this.props.match.params.backupId);
   }
-  download() {}
+  download(id) {
+    console.log('download');
+    axios
+      .get(`http://localhost:4000/backups/download/${id}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
   render() {
     const theme = {
       scheme: 'monokai',
@@ -44,7 +55,9 @@ export class Backup extends Component {
                 <p className="title is-1 is-spaced">{this.props.backup.backupId}</p>
               </div>
               <div className="column mt">
-                <div className="button is-info mt">Download</div>
+                <div className="button is-info mt" onClick={this.download(this.props.match.params.backupId)}>
+                  Download
+                </div>
               </div>
             </div>
             <p className="subtitle is-3">

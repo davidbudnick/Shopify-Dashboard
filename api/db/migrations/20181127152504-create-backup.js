@@ -11,6 +11,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING,
       },
+      userId: {
+        type: Sequelize.STRING,
+      },
       products: {
         type: Sequelize.JSON(Sequelize.STRING),
       },

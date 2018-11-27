@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     'Backup',
     {
       name: DataTypes.STRING,
+      userId: DataTypes.STRING,
       products: DataTypes.JSON(DataTypes.STRING),
     },
     {},

@@ -5,13 +5,13 @@ const backups = require('../backups');
 // const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
 
 //Gets all the backups in the db
-router.get('/:projectId', async (req, res, next) => {
-  let productData = await backups.backup(req.params.projectId);
-  res.send(productData);
+router.get('/:userId', async (req, res, next) => {
+  let backupData = await backups.getBackups(req.params.userId);
+  res.send(backupData);
 });
 
 //Starts a backup in the database
 router.get('/start/:projectId', async (req, res, next) => {
-  let productData = await backups.start(req.params.projectId);
-  res.send(productData);
+  let backupData = await backups.start(req.params.projectId);
+  res.send(backupData);
 });

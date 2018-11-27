@@ -29,7 +29,7 @@ const backups = require('./src/routes/backups');
 app.use('/products', products);
 app.use('/user', user);
 app.use('/projects', projects);
-app.user('/backups', backups);
+app.use('/backups', backups);
 
 //Base route
 app.get('/', (req, res) => {

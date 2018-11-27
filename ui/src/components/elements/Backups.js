@@ -5,20 +5,24 @@ import { connect } from 'react-redux';
 import { getBackups } from '../../actions/backupActions';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
+import Moment from 'react-moment';
 
 export class Backups extends Component {
   componentWillMount() {
     this.props.getBackups(this.props.match.params.projectId);
   }
+
   render() {
     const backupItems = this.props.backups.map((backup) => (
-      <tr>
+      <tr key={backup.backupId}>
         <td>{backup.backupId}</td>
         <td>{backup.userId}</td>
         <td>
           <a>Download</a>
         </td>
-        <td>{backup.createdAt}</td>
+        <td>
+          <Moment>{backup.createdAt}</Moment>
+        </td>
       </tr>
     ));
 
@@ -31,7 +35,7 @@ export class Backups extends Component {
           <div className="ml mt container">
             <div className="columns">
               <div className="column is-narrow">
-                <h2 className="title is-2">Current Backups</h2>
+                <h2 className="title is-2 is-unselectable">Current Backups</h2>
               </div>
               <CreateBackup projectId={this.props.match.params.projectId} />
             </div>

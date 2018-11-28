@@ -12,15 +12,14 @@ export class Backup extends Component {
     this.props.getBackup(this.props.match.params.backupId);
   }
   download(id) {
-    console.log('download');
-    axios
-      .get(`http://localhost:4000/backups/download/${id}`)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    // axios
+    //   .get(`http://localhost:4000/backups/download/${id}`)
+    //   .then((response) => {
+    //     console.log(response);
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
   }
   render() {
     const theme = {

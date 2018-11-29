@@ -1,2 +1,2 @@
-# Shopify-Dashboard
+# Shopify Dashboard
 React shopify dashboard.

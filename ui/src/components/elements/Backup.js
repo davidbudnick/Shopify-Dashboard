@@ -6,6 +6,7 @@ import propTypes from 'prop-types';
 import Moment from 'react-moment';
 import JSONTree from 'react-json-tree';
 import axios from 'axios';
+import fileDownload from 'js-file-download';
 
 export class Backup extends Component {
   componentWillMount() {
@@ -16,6 +17,7 @@ export class Backup extends Component {
     axios
       .get(`http://localhost:4000/backups/download/${this.props.match.params.backupId}`)
       .then((response) => {
+        fileDownload(response.data, `${this.props.match.params.backupId}.json`);
         console.log(response);
       })
       .catch(function(error) {

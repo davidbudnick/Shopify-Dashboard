@@ -4,6 +4,7 @@ const backups = require('../backups');
 const fs = require('fs');
 const pino = require('pino');
 const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
+const { exec } = require('child_process');
 
 //Gets all the backups in the db
 router.get('/:projectId', async (req, res, next) => {
@@ -36,4 +37,17 @@ router.get('/download/:backupId', async (req, res, next) => {
   //Sends the file that was created from the backup information
   res.download(`./temp/${req.params.backupId}.json`);
 });
+
+router.get('/b/clean', async (req, res, next) => {
+  exec('rm -rf ./temp/*', (err, stdout, stderr) => {
+    if (err) {
+      logger.error('backup could not be deleted from the server', err);
+      res.send('Files could not be deleted!');
+      return;
+    }
+    logger.info('backups deleted');
+    res.send('Files Deleted');
+  });
+});
+
 module.exports = router;

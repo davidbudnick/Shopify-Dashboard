@@ -10,16 +10,17 @@ import axios from 'axios';
 export class Backup extends Component {
   componentWillMount() {
     this.props.getBackup(this.props.match.params.backupId);
+    this.download = this.download.bind(this);
   }
-  download(id) {
-    // axios
-    //   .get(`http://localhost:4000/backups/download/${id}`)
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
+  download() {
+    axios
+      .get(`http://localhost:4000/backups/download/${this.props.match.params.backupId}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
   render() {
     const theme = {
@@ -54,9 +55,9 @@ export class Backup extends Component {
                 <p className="title is-1 is-spaced">{this.props.backup.backupId}</p>
               </div>
               <div className="column mt">
-                <div className="button is-info mt" onClick={this.download(this.props.match.params.backupId)}>
+                <button className="button mt is-info" onClick={this.download}>
                   Download
-                </div>
+                </button>
               </div>
             </div>
             <p className="subtitle is-3">

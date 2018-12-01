@@ -21,6 +21,8 @@ async function getBackups(projectId) {
     where: {
       userId: projectInfo.userId,
     },
+  }).catch((err) => {
+    logger.error('The backup data could not be found', err);
   });
 
   //Returns all backups for the current user
@@ -94,6 +96,7 @@ async function backup(backupId) {
 
 //Finds one backup in the database and sends just product data
 async function download(backupId) {
+  //Find one backup from the databse from the backupId
   let backupData = await db.Backup.findOne({
     where: {
       backupId: backupId,
@@ -102,6 +105,7 @@ async function download(backupId) {
     logger.error('There was an error finding the backup in the database', err);
   });
 
+  //Return single backup
   return backupData.products;
 }
 

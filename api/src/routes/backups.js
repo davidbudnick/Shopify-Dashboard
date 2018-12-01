@@ -28,10 +28,12 @@ router.get('/download/:backupId', async (req, res, next) => {
   //Query the database for the backup file
   let backupData = await backups.download(req.params.backupId);
 
+  //creates a temp file for backups on the server so it can be sent to the frontend
   fs.writeFileSync(`temp/${req.params.backupId}.json`, JSON.stringify(backupData), (err) => {
     if (err) throw err;
   });
 
+  //Sends the file that was created from the backup information
   res.download(`./temp/${req.params.backupId}.json`);
 });
 module.exports = router;

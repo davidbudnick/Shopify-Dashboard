@@ -75,16 +75,21 @@ async function getAllProjects() {
   return projectData;
 }
 
-//TODO: Add a Function that get infromation to update the settings in the proejct table
-// async function updateProject(projectId) {
-//   let projectData = await db.Project.update({
-//     where: {
-//       projectId: projectId,
-//     },
-//   });
-// }
+//Update project settings in the db
+async function updateProject(projectId, apiKey, password, domain) {
+  let projectData = await db.Project.update({
+    apiKey: apiKey,
+    password: password,
+    domain: domain,
+    where: {
+      projectId: projectId,
+    },
+  });
+  return projectData;
+}
 
 module.exports.createProject = createProject;
 module.exports.getProject = getProject;
 module.exports.getProjects = getProjects;
 module.exports.getAllProjects = getAllProjects;
+module.exports.updateProject = updateProject;

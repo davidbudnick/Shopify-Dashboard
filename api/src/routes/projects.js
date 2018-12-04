@@ -24,6 +24,20 @@ router.post('/newProject/:userId', async (req, res, next) => {
   res.send(projectData);
 });
 
+//Updates project information in db
+router.post('/updateProject/:projectId'),
+  async (req, res, next) => {
+    let projectData = await projects.updateProject(
+      req.params.projectId,
+      req.body.apiKey,
+      req.body.password,
+      req.body.password,
+    );
+
+    //sends the updated project information back to the user
+    res.send(projectData);
+  };
+
 //Send project Id and get the project back from the db
 router.get('/project/:projectId', async (req, res, next) => {
   //Gets single project by userId and projectId

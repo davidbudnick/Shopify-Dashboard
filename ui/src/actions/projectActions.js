@@ -1,4 +1,4 @@
-import { GET_PROJECT, CREATE_PROJECT, GET_PROJECTS } from './types';
+import { GET_PROJECT, CREATE_PROJECT, GET_PROJECTS, UPDATE_PROJECT } from './types';
 
 export const getProjects = (userId) => (dispatch) => {
   fetch(`http://localhost:4000/projects/projects/${userId}`)
@@ -34,6 +34,23 @@ export const createProject = (userId, projectData) => (dispatch) => {
     .then((project) =>
       dispatch({
         type: CREATE_PROJECT,
+        payload: project,
+      }),
+    );
+};
+
+export const updateProject = (projectId, projectData) => (dispatch) => {
+  fetch(`https://localhost:4000/project/updateProject/${projectId}`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify(projectData),
+  })
+    .then((res) => res.json())
+    .then((project) =>
+      dispatch({
+        type: UPDATE_PROJECT,
         payload: project,
       }),
     );

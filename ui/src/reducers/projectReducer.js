@@ -1,4 +1,4 @@
-import { GET_PROJECT, GET_PROJECTS, CREATE_PROJECT } from '../actions/types';
+import { GET_PROJECT, GET_PROJECTS, CREATE_PROJECT, UPDATE_PROJECT } from '../actions/types';
 
 const initailState = {
   project: [],
@@ -21,6 +21,11 @@ export default function(state = initailState, action) {
       return {
         ...state,
         projects: action.payload,
+      };
+    case UPDATE_PROJECT:
+      return {
+        ...state,
+        project: action.payload,
       };
     default:
       return state;

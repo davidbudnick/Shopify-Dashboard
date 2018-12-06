@@ -11,7 +11,7 @@ export class SideBar extends Component {
         <ul className="menu-list">
           <li>
             <Link
-              to={{ pathname: `/project/${this.props.projectId}/dashboard` }}
+              to={{ pathname: `/project/${this.props.projectId}/dashboard/` }}
               className={pageName === 'dashboard' ? 'is-active' : ''}
             >
               Dashboard
@@ -32,7 +32,7 @@ export class SideBar extends Component {
         <ul className="menu-list">
           <li>
             <Link
-              to={{ pathname: `/project/${this.props.projectId}/backups` }}
+              to={{ pathname: `/project/${this.props.projectId}/backups/` }}
               className={pageName === 'backups' ? 'is-active' : ''}
             >
               Backup Project
@@ -42,7 +42,7 @@ export class SideBar extends Component {
         <ul className="menu-list">
           <li>
             <Link
-              to={{ pathname: `/project/${this.props.projectId}/transfer` }}
+              to={{ pathname: `/project/${this.props.projectId}/transfer/` }}
               className={pageName === 'transfer' ? 'is-active' : ''}
             >
               Transfer Products
@@ -53,7 +53,7 @@ export class SideBar extends Component {
         <ul className="menu-list">
           <li>
             <Link
-              to={{ pathname: `/project/${this.props.projectId}/settings` }}
+              to={{ pathname: `/project/${this.props.projectId}/settings/` }}
               className={pageName === 'settings' ? 'is-active' : ''}
             >
               Project Settings

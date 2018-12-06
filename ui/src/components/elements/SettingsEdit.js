@@ -10,6 +10,8 @@ export class SettingsEdit extends Component {
 
     if (this.props.location.query === undefined) {
       this.props.history.replace(`/project/${this.props.match.params.projectId}/settings/`);
+      this.onChange = this.onChange.bind(this);
+      this.onSubmit = this.onSubmit.bind(this);
     }
     this.state = {
       apiKey: this.props.location.query ? this.props.location.query.apiKey : 'null',
@@ -17,8 +19,6 @@ export class SettingsEdit extends Component {
       domain: this.props.location.query ? this.props.location.query.domain : 'null',
       name: this.props.location.query ? this.props.location.query.name : 'null',
     };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentWillMount;
@@ -108,11 +108,9 @@ export class SettingsEdit extends Component {
 }
 
 SettingsEdit.propTypes = {
-  createProject: propTypes.func.isRequired,
+  updateProject: propTypes.func.isRequired,
 };
-
-export default SettingsEdit;
-// export default connect(
-//   null,
-//   { updateProject },
-// )(SettingsEdit)();
+export default connect(
+  null,
+  { updateProject },
+)(SettingsEdit);

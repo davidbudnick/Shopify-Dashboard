@@ -4,6 +4,7 @@ React shopify dashboard designed to be collection of mini shopify tools used to 
 
 ## Current Features
 - Add Muitiple Stores as project to your account
+- View Muitiple Stores on dashbaord
 - View Store products as cards
 - Backup Products -> View/Download backups
 - Edit project settings

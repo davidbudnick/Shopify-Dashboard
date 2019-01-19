@@ -13,7 +13,9 @@
     "dbd": "yarn sq db:drop",
     "dbc": "yarn sq db:create",
     "dbm": "yarn sq db:migrate",
-    "dbr": "yarn dbd && yarn dbc && yarn dbm"
+    "dbr": "yarn dbd && yarn dbc && yarn dbm",
+    "test": "jest --watchAll",
+    "coverage": "jest --coverage"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -21,6 +23,7 @@
     "cors": "^2.8.4",
     "dotenv": "^6.1.0",
     "express": "^4.16.3",
+    "jest": "^23.6.0",
     "pg": "^7.6.0",
     "pg-hstore": "^2.3.2",
     "pino": "^5.6.4",

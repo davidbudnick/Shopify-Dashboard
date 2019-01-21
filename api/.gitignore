@@ -4,3 +4,4 @@ backup-*.json
 .DS_STORE
 .cache
 dist
+yarn-error.log

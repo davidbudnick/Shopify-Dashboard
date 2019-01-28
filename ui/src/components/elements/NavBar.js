@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { Component } from 'react';
-import auth0Client from '../../Auth';
+import auth0Client from '../elements/Auth';
 import { Link, withRouter } from 'react-router-dom';
 
 export class NavBar extends Component {

@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const pino = require('pino');
-const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
 const projects = require('../projects');
+// const pino = require('pino');
+// const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
 
 //returns all the projects from the db
-router.get('/', async (req, res, next) => {
+router.get('/', async (res) => {
   let projectData = await projects.getAllProjects();
   res.send(projectData);
 });
 
 //Creates a project in the user project json object
-router.post('/newProject/:userId', async (req, res, next) => {
+router.post('/newProject/:userId', async (req, res) => {
   //This should recieve a json object with the new project
   let projectData = await projects.createProject(
     req.body.apiKey,
@@ -26,7 +26,7 @@ router.post('/newProject/:userId', async (req, res, next) => {
 
 //Updates project information in db
 router.post('/updateProject/:projectId'),
-  async (req, res, next) => {
+  async (req, res) => {
     let projectData = await projects.updateProject(
       req.params.projectId,
       req.body.apiKey,
@@ -39,7 +39,7 @@ router.post('/updateProject/:projectId'),
   };
 
 //Send project Id and get the project back from the db
-router.get('/project/:projectId', async (req, res, next) => {
+router.get('/project/:projectId', async (req, res) => {
   //Gets single project by userId and projectId
   let projectData = await projects.getProject(req.params.projectId);
   //Sends all project data back to the user
@@ -47,7 +47,7 @@ router.get('/project/:projectId', async (req, res, next) => {
 });
 
 //Send user Id and get all project that are that user project from the db
-router.get('/projects/:userId', async (req, res, next) => {
+router.get('/projects/:userId', async (req, res) => {
   //Waits for the req params to load
   let userId = await req.params.userId;
   //Gets all projects by userId

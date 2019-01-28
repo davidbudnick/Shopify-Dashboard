@@ -45,14 +45,9 @@ services:
       SERVER_PORT: 4000
       NODE_ENV: production
       DB_HOSTNAME: postgres
-      # API_KEY: 
-      # SECRET: 
-      # USER_ID: 
-      # ACCESS_TOKEN: 
-      # ACCESS_TOKEN_SECRET: 
-      POSTGRES_USERNAME: fg
+      POSTGRES_USERNAME: shopify
       # POSTGRES_PASSWORD: 
-      POSTGRES_DB: fg
+      POSTGRES_DB: shopify
       DB_HOSTNAME: postgres
   postgres:
     image: postgres:10-alpine
@@ -66,6 +61,6 @@ services:
       - 'traefik.port=5432'
       - 'traefik.default.protocol=http'
     environment:
-      POSTGRES_USER: fg
+      POSTGRES_USER: shopify
       # POSTGRES_PASSWORD: 
-      POSTGRES_DB: fg
+      POSTGRES_DB: shopify

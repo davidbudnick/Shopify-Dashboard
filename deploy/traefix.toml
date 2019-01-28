@@ -22,7 +22,7 @@ watch = true
 exposedbydefault = false
 
 [acme]
-email = "example@email.com"
+email = "david@budnick.ca"
 storage = "acme.json"
 entryPoint = "https"
 OnHostRule = true

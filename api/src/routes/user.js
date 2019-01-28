@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const user = require('../user');
-const pino = require('pino');
-const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
+// const pino = require('pino');
+// const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
 
 //Used to create a user in the db
-router.post('/', async (req, res, next) => {
+router.post('/', async (req, res) => {
   //Save user data in db
   let userData = await user.addUser(req.body.profile);
 
@@ -15,7 +15,7 @@ router.post('/', async (req, res, next) => {
 
 //Finds all users in the db
 //TODO: Remove this for production
-router.get('/all', async (req, res, next) => {
+router.get('/all', async (res) => {
   let userData = await user.findAllUsers();
 
   //Sends all user in broswer
@@ -23,7 +23,7 @@ router.get('/all', async (req, res, next) => {
 });
 
 //Returns one use by its userid
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', async (req, res) => {
   let userData = await user.getUser(req.params.id);
   res.send(userData);
 });

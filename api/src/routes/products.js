@@ -5,7 +5,7 @@ const products = require('../products');
 // const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
 
 //Get all products from shopify
-router.get('/:projectId', async (req, res, next) => {
+router.get('/:projectId', async (req, res) => {
   let productData = await products.getProducts(req.params.projectId);
   res.send(productData);
 });
@@ -17,19 +17,19 @@ router.get('/:projectId/:id', async (req, res) => {
 });
 
 //Delete all products from shopify
-router.get('/deleteAll/:projectId', async (req, res, next) => {
+router.get('/deleteAll/:projectId', async (req, res) => {
   let productData = await products.deleteAllProducts(req.params.projectId);
   res.send(productData);
 });
 
 //Delete one product from shopify
-router.get('/delete/:projectId/:id', async (req, res, next) => {
+router.get('/delete/:projectId/:id', async (req, res) => {
   let productData = await products.deleteProduct(req.params.projectId, req.params.id);
   res.send(productData);
 });
 
 //add a product to shopify
-router.post('/add/:projectId', async (req, res, next) => {
+router.post('/add/:projectId', async (req, res) => {
   let productData = await products.addProduct(
     req.params.projectId,
     req.body.title,

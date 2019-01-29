@@ -5,6 +5,11 @@ import { connect } from 'react-redux';
 import { updateProject } from '../../actions/projectActions';
 
 export class SettingsEdit extends Component {
+  componentWillMount() {
+    console.log(this.props);
+    console.log(this.state);
+  }
+
   constructor(props) {
     super(props);
 
@@ -14,16 +19,25 @@ export class SettingsEdit extends Component {
       this.onSubmit = this.onSubmit.bind(this);
     }
     this.state = {
-      apiKey: this.props.location.query ? this.props.location.query.apiKey : 'null',
-      password: this.props.location.query ? this.props.location.query.password : 'null',
-      domain: this.props.location.query ? this.props.location.query.domain : 'null',
-      name: this.props.location.query ? this.props.location.query.name : 'null',
+      name: '',
+      domain: '',
+      apiKey: '',
+      password: '',
+    };
+
+    this.state = {
+      apiKey: this.props.location.query.apiKey,
+      password: this.props.location.query.password,
+      domain: this.props.location.query.domain,
+      name: this.props.location.query.name,
     };
   }
 
-  componentWillMount;
-
   onChange(e) {
+    console.log(e.target.name);
+    console.log(e.target.value);
+    console.log(this.state);
+
     this.setState({ [e.target.name]: e.target.value });
   }
   onSubmit(e) {
@@ -56,7 +70,7 @@ export class SettingsEdit extends Component {
                 name="name"
                 type="text"
                 placeholder="Test Store"
-                onChange={this.onChange}
+                onChange={this.onChange.bind(this)}
                 value={this.state.name}
               />
             </div>
@@ -68,7 +82,7 @@ export class SettingsEdit extends Component {
                 name="domain"
                 type="text"
                 placeholder="https://test.myshopify.com"
-                onChange={this.onChange}
+                onChange={this.onChange.bind(this)}
                 value={this.state.domain}
               />
             </div>
@@ -80,7 +94,7 @@ export class SettingsEdit extends Component {
                 name="apiKey"
                 type="text"
                 placeholder="a956c6a8bea9af1c64838bdb90fdd555"
-                onChange={this.onChange}
+                onChange={this.onChange.bind(this)}
                 value={this.state.apiKey}
               />
             </div>
@@ -92,7 +106,7 @@ export class SettingsEdit extends Component {
                 name="password"
                 type="text"
                 placeholder="f7fd2c7c65147f58e3ebebe9d563777"
-                onChange={this.onChange}
+                onChange={this.onChange.bind(this)}
                 value={this.state.password}
               />
             </div>

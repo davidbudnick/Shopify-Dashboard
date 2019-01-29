@@ -85,6 +85,8 @@ async function updateProject(projectId, apiKey, password, domain) {
       projectId: projectId,
     },
   });
+
+  logger.info(projectData);
   return projectData;
 }
 

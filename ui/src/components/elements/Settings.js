@@ -45,6 +45,7 @@ class Settings extends Component {
               to={{
                 pathname: `/project/${this.props.match.params.projectId}/settings/edit/`,
                 query: {
+                  userId: this.props.project.userId,
                   name: this.props.project.name,
                   domain: this.props.project.domain,
                   apiKey: this.props.project.apiKey,

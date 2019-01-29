@@ -7,7 +7,6 @@ import { updateProject } from '../../actions/projectActions';
 export class SettingsEdit extends Component {
   componentWillMount() {
     console.log(this.props);
-    console.log(this.state);
   }
 
   constructor(props) {
@@ -15,9 +14,12 @@ export class SettingsEdit extends Component {
 
     if (this.props.location.query === undefined) {
       this.props.history.replace(`/project/${this.props.match.params.projectId}/settings/`);
-      this.onChange = this.onChange.bind(this);
-      this.onSubmit = this.onSubmit.bind(this);
     }
+    //Important to bind the current state to the method
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+
+    //Set a state as null when loaded
     this.state = {
       name: '',
       domain: '',
@@ -25,6 +27,7 @@ export class SettingsEdit extends Component {
       password: '',
     };
 
+    //Sets the state from the props
     this.state = {
       apiKey: this.props.location.query.apiKey,
       password: this.props.location.query.password,
@@ -34,11 +37,8 @@ export class SettingsEdit extends Component {
   }
 
   onChange(e) {
-    console.log(e.target.name);
-    console.log(e.target.value);
-    console.log(this.state);
-
     this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state);
   }
   onSubmit(e) {
     e.preventDefault();
@@ -50,8 +50,8 @@ export class SettingsEdit extends Component {
       name: this.state.name,
     };
 
-    this.props.updateProject(this.props.match.params.id, projectData);
-    this.props.history.replace('/profile/' + this.props.match.params.id);
+    this.props.updateProject(this.props.match.params.projectId, projectData);
+    this.props.history.replace('/project/' + this.props.match.params.projectId + '/settings');
   }
 
   render() {
@@ -70,7 +70,7 @@ export class SettingsEdit extends Component {
                 name="name"
                 type="text"
                 placeholder="Test Store"
-                onChange={this.onChange.bind(this)}
+                onChange={this.onChange}
                 value={this.state.name}
               />
             </div>
@@ -82,7 +82,7 @@ export class SettingsEdit extends Component {
                 name="domain"
                 type="text"
                 placeholder="https://test.myshopify.com"
-                onChange={this.onChange.bind(this)}
+                onChange={this.onChange}
                 value={this.state.domain}
               />
             </div>
@@ -94,7 +94,7 @@ export class SettingsEdit extends Component {
                 name="apiKey"
                 type="text"
                 placeholder="a956c6a8bea9af1c64838bdb90fdd555"
-                onChange={this.onChange.bind(this)}
+                onChange={this.onChange}
                 value={this.state.apiKey}
               />
             </div>
@@ -106,7 +106,7 @@ export class SettingsEdit extends Component {
                 name="password"
                 type="text"
                 placeholder="f7fd2c7c65147f58e3ebebe9d563777"
-                onChange={this.onChange.bind(this)}
+                onChange={this.onChange}
                 value={this.state.password}
               />
             </div>

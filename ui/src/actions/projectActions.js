@@ -40,7 +40,7 @@ export const createProject = (userId, projectData) => (dispatch) => {
 };
 
 export const updateProject = (projectId, projectData) => (dispatch) => {
-  fetch(`https://localhost:4000/project/updateProject/${projectId}`, {
+  fetch(`http://localhost:4000/projects/updateProject/${projectId}`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',

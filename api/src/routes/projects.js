@@ -31,7 +31,7 @@ router.post('/updateProject/:projectId'),
       req.params.projectId,
       req.body.apiKey,
       req.body.password,
-      req.body.password,
+      req.body.domain,
     );
 
     //sends the updated project information back to the user

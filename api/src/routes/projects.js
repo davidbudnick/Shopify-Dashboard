@@ -5,8 +5,8 @@ const projects = require('../projects');
 // const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
 
 //returns all the projects from the db
-router.get('/', async (res) => {
-  let projectData = await projects.getAllProjects();
+router.get('/all/:userId', async (req, res) => {
+  let projectData = await projects.getAllProjects(req.params.userId);
   res.send(projectData);
 });
 
@@ -25,18 +25,17 @@ router.post('/newProject/:userId', async (req, res) => {
 });
 
 //Updates project information in db
-router.post('/updateProject/:projectId'),
-  async (req, res) => {
-    let projectData = await projects.updateProject(
-      req.params.projectId,
-      req.body.apiKey,
-      req.body.password,
-      req.body.domain,
-    );
+router.post('/updateProject/update/:projectId', async (req, res) => {
+  let projectData = await projects.updateProject(
+    req.params.projectId,
+    req.body.apiKey,
+    req.body.password,
+    req.body.domain,
+  );
 
-    //sends the updated project information back to the user
-    res.send(projectData);
-  };
+  //sends the updated project information back to the user
+  res.send(projectData);
+});
 
 //Send project Id and get the project back from the db
 router.get('/project/:projectId', async (req, res) => {

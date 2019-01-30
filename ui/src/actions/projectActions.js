@@ -1,7 +1,7 @@
 import { GET_PROJECT, CREATE_PROJECT, GET_PROJECTS, UPDATE_PROJECT } from './types';
 
 export const getProjects = (userId) => (dispatch) => {
-  fetch(`http://localhost:4000/projects/projects/${userId}`)
+  fetch(`http://localhost:4000/projects/projects/all/${userId}`)
     .then((res) => res.json())
     .then((projects) =>
       dispatch({
@@ -40,7 +40,7 @@ export const createProject = (userId, projectData) => (dispatch) => {
 };
 
 export const updateProject = (projectId, projectData) => (dispatch) => {
-  fetch(`http://localhost:4000/projects/updateProject/${projectId}`, {
+  fetch(`http://localhost:4000/projects/updateProject/update/${projectId}`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',

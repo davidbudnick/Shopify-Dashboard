@@ -5,10 +5,6 @@ import { connect } from 'react-redux';
 import { updateProject } from '../../actions/projectActions';
 
 export class SettingsEdit extends Component {
-  componentWillMount() {
-    console.log(this.props);
-  }
-
   constructor(props) {
     super(props);
 
@@ -38,7 +34,6 @@ export class SettingsEdit extends Component {
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state);
   }
   onSubmit(e) {
     e.preventDefault();

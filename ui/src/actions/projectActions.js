@@ -1,7 +1,7 @@
 import { GET_PROJECT, CREATE_PROJECT, GET_PROJECTS, UPDATE_PROJECT } from './types';
 
 export const getProjects = (userId) => (dispatch) => {
-  fetch(`http://localhost:4000/projects/projects/all/${userId}`)
+  fetch(`http://localhost:4000/projects/all/${userId}`)
     .then((res) => res.json())
     .then((projects) =>
       dispatch({

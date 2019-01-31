@@ -77,6 +77,7 @@ async function getAllProjects() {
 
 //Update project settings in the db
 async function updateProject(projectId, apiKey, password, domain, name) {
+  //Updates project in the database by projectId
   await db.Project.update(
     {
       apiKey: apiKey,
@@ -91,7 +92,19 @@ async function updateProject(projectId, apiKey, password, domain, name) {
     },
   );
 
+  //Finds the project Id in the database
   let projectData = await db.Project.findOne({
+    where: {
+      projectId: projectId,
+    },
+  });
+
+  //Returns updated project data
+  return projectData;
+}
+
+async function deleteproject(projectId) {
+  let projectData = await db.Project.delete({
     where: {
       projectId: projectId,
     },
@@ -105,3 +118,4 @@ module.exports.getProject = getProject;
 module.exports.getProjects = getProjects;
 module.exports.getAllProjects = getAllProjects;
 module.exports.updateProject = updateProject;
+module.exports.deleteproject = deleteproject;

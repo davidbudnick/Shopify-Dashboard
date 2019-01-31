@@ -56,4 +56,10 @@ router.get('/projects/:userId', async (req, res) => {
   res.send(projectData);
 });
 
+//Deletes the project in the database
+router.post('/projects/delete/:projectid', async (req, res) => {
+  let projectData = await projects.deleteproject(req.params.projectId);
+  res.send(projectData);
+});
+
 module.exports = router;

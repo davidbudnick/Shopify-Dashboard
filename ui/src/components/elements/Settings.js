@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { getProject } from '../../actions/projectActions';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
+import DeleteProject from './DeleteProject';
 
 class Settings extends Component {
   componentWillMount() {
@@ -53,8 +54,9 @@ class Settings extends Component {
                 },
               }}
             >
-              <button className="button is-info">Edit Settings</button>
+              <button className="button is-info mb">Edit Settings</button>
             </Link>
+            <DeleteProject />
           </form>
         </div>
       </div>

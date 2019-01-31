@@ -1,3 +1,5 @@
+@import '../../../node_modules/bulma-extensions/bulma-divider/dist/css/bulma-divider.min.css';
+
 .ml {
   margin-left: 0.5rem !important;
 }

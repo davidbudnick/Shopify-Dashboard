@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const projects = require('../projects');
-// const pino = require('pino');
-// const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
+const pino = require('pino');
+const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LEVEL || 'info', name: 'index' });
 
 //returns all the projects from the db
 router.get('/all/:userId', async (req, res) => {
@@ -26,14 +26,15 @@ router.post('/newProject/:userId', async (req, res) => {
 
 //Updates project information in db
 router.post('/updateProject/update/:projectId', async (req, res) => {
-  let projectData = await projects.updateProject(
-    req.params.projectId,
-    req.body.apiKey,
-    req.body.password,
-    req.body.domain,
-  );
+  logger.info(req.body.name);
+  let projectData = await projects
+    .updateProject(req.params.projectId, req.body.apiKey, req.body.password, req.body.domain, req.body.name)
+    .catch((err) => {
+      logger.error('There was an error passing the data', err);
+    });
 
-  //sends the updated project information back to the user
+  logger.info('the DATA', projectData);
+
   res.send(projectData);
 });
 

@@ -76,17 +76,27 @@ async function getAllProjects() {
 }
 
 //Update project settings in the db
-async function updateProject(projectId, apiKey, password, domain) {
-  let projectData = await db.Project.update({
-    apiKey: apiKey,
-    password: password,
-    domain: domain,
+async function updateProject(projectId, apiKey, password, domain, name) {
+  await db.Project.update(
+    {
+      apiKey: apiKey,
+      password: password,
+      domain: domain,
+      name: name,
+    },
+    {
+      where: {
+        projectId: projectId,
+      },
+    },
+  );
+
+  let projectData = await db.Project.findOne({
     where: {
       projectId: projectId,
     },
   });
 
-  logger.info(projectData);
   return projectData;
 }
 

@@ -28,7 +28,7 @@ async function addUser(profile) {
     });
   }
 
-  logger.info(JSON.stringify(userData));
+  // logger.info(JSON.stringify(userData));
 
   //Return db user data
   return userData;

@@ -90,24 +90,31 @@ async function updateProject(projectId, apiKey, password, domain, name) {
         projectId: projectId,
       },
     },
-  );
+  ).catch((err) => {
+    logger.error('There was an error updating the project', err);
+  });
 
   //Finds the project Id in the database
   let projectData = await db.Project.findOne({
     where: {
       projectId: projectId,
     },
+  }).catch((err) => {
+    logger.error('There was an error looking up the project', err);
   });
 
   //Returns updated project data
   return projectData;
 }
 
+//Delete the project by the projectId
 async function deleteproject(projectId) {
   let projectData = await db.Project.delete({
     where: {
       projectId: projectId,
     },
+  }).catch((err) => {
+    logger.error('There was an error deleting the project', err);
   });
 
   return projectData;

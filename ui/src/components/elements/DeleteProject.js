@@ -4,9 +4,27 @@ import { connect } from 'react-redux';
 import { deleteProject } from '../../actions/projectActions';
 
 export class DeleteProject extends Component {
+  componentWillMount() {
+    this.modalOpen = this.modalOpen.bind(this);
+    this.modalClose = this.modalClose.bind(this);
+    this.deleteProject = this.deleteProject(this);
+  }
   constructor(props) {
     super(props);
-    console.log(this.props);
+    this.state = {
+      active: false,
+    };
+    console.log(props);
+  }
+
+  modalOpen() {
+    this.setState({ active: true });
+  }
+  modalClose() {
+    this.setState({ active: false });
+  }
+  deleteProject() {
+    // this.props.deleteProject(this.props.match.params.projectId);
   }
 
   render() {
@@ -19,23 +37,29 @@ export class DeleteProject extends Component {
             <p>Once you delete a project, there is no going back. Please be certain.</p>
           </div>
           <div className="column is-narrow">
-            <button className="button is-danger mt is-pulled-left" type="submit">
+            <div className="button is-danger mt is-pulled-left" onClick={this.modalOpen}>
               Delete Project
-            </button>
+            </div>
           </div>
         </div>
         <div className="is-divider is-marginless" />
-        <div className="modal ">
+        <div className={this.state.active ? 'is-active modal' : 'modal'}>
           <div className="modal-background" />
           <div className="modal-card">
             <header className="modal-card-head">
-              <p className="modal-card-title">Are you sure you want to delete your project?</p>
-              <button className="delete" aria-label="close" />
+              <p className="modal-card-title">Are you sure you want to DELETE your project?</p>
+              <div className="delete" aria-label="close" onClick={this.modalClose} />
             </header>
-            <section className="modal-card-body" />
+            <section
+              className="modal-card-body 
+            "
+            >
+              <b>Please type the name of project to delete:()</b>
+            </section>
             <footer className="modal-card-foot">
-              <button className="button is-warning">Cancel</button>
-              <button className="button is-danger">Delete</button>
+              <div className="button is-danger" onClick={this.deleteProject}>
+                Delete
+              </div>
             </footer>
           </div>
         </div>

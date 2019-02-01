@@ -6,12 +6,46 @@ import { connect } from 'react-redux';
 import { getProject } from '../../actions/projectActions';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
-import DeleteProject from './DeleteProject';
 
 class Settings extends Component {
   componentWillMount() {
     this.props.getProject(this.props.match.params.projectId);
+    this.modalOpen = this.modalOpen.bind(this);
+    this.modalClose = this.modalClose.bind(this);
+    this.deleteProject = this.deleteProject(this);
+    this.onChange = this.onChange.bind(this);
   }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: false,
+      projectNameCheck: '',
+      projectCheck: false,
+    };
+    console.log(props);
+  }
+
+  onChange(e) {
+    console.log(e.target.value);
+
+    if (e.target.name === 'projectNameCheck') {
+      if (e.target.value === this.props.project.name) {
+        this.setState({
+          projectCheck: true,
+        });
+      }
+    }
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  modalOpen() {
+    this.setState({ active: true });
+  }
+  modalClose() {
+    this.setState({ active: false });
+  }
+  deleteProject() {}
 
   render() {
     return (
@@ -56,7 +90,47 @@ class Settings extends Component {
             >
               <button className="button is-info mb">Edit Settings</button>
             </Link>
-            <DeleteProject />
+            <div className="mt">
+              <div className="is-divider is-marginless" data-content="Danger Zone" />
+              <div className="columns mt mb">
+                <div className="column">
+                  <b>Delete this project</b>
+                  <p>Once you delete a project, there is no going back. Please be certain.</p>
+                </div>
+                <div className="column is-narrow">
+                  <div className="button is-danger mt is-pulled-left" onClick={this.modalOpen}>
+                    Delete Project
+                  </div>
+                </div>
+              </div>
+              <div className="is-divider is-marginless" />
+              <div className={this.state.active ? 'is-active modal' : 'modal'}>
+                <div className="modal-background" />
+                <div className="modal-card">
+                  <header className="modal-card-head">
+                    <p className="modal-card-title">Are you sure you want to DELETE your project?</p>
+                    <div className="delete" aria-label="close" onClick={this.modalClose} />
+                  </header>
+                  <section className="modal-card-body">
+                    <b className="is-size-5">Please type the name of project to delete: </b>
+                    <span className="is-size-5">({this.props.project.name})</span>
+                    <input
+                      className="input mt"
+                      name="projectNameCheck"
+                      type="text"
+                      onChange={this.onChange}
+                      value={this.props.projectNameCheck}
+                    />
+                  </section>
+                  <footer className="modal-card-foot">
+                    <div className="button is-danger" disabled={!this.props.projectCheck} onClick={this.deleteProject}>
+                      Delete
+                    </div>
+                    <a class="button">Disabled</a>
+                  </footer>
+                </div>
+              </div>
+            </div>
           </form>
         </div>
       </div>

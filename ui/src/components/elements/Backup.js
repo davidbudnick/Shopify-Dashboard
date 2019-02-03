@@ -15,7 +15,7 @@ export class Backup extends Component {
   }
   download() {
     axios
-      .get(`http://localhost:4000/backups/download/${this.props.match.params.backupId}`)
+      .get(`${process.env.REACT_APP_API_ADDRESS}${this.props.match.params.backupId}`)
       .then((response) => {
         fileDownload(response.data, `${this.props.match.params.backupId}.json`);
         console.log(response);

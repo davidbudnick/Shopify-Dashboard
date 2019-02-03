@@ -1,7 +1,8 @@
 import { GET_PRODUCTS } from './types';
+require('dotenv').config();
 
 export const getProducts = (projectId) => (dispatch) => {
-  fetch(`http://localhost:4000/products/${projectId}`)
+  fetch(`${process.env.REACT_APP_API_ADDRESS}/projects/${projectId}`)
     .then((res) => res.json())
     .then((products) =>
       dispatch({

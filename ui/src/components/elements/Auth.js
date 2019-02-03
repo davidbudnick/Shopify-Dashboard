@@ -20,7 +20,7 @@ class Auth {
   }
 
   getProfile() {
-    axios.post('http://localhost:4000/user', {
+    axios.post(`${process.env.REACT_APP_API_ADDRESS}user/`, {
       profile: this.profile,
     });
     return this.profile;

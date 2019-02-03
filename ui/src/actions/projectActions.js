@@ -1,7 +1,8 @@
 import { GET_PROJECT, CREATE_PROJECT, GET_PROJECTS, UPDATE_PROJECT, DELETE_PROJECT } from './types';
+require('dotenv').config();
 
 export const getProjects = (userId) => (dispatch) => {
-  fetch(`http://localhost:4000/projects/all/${userId}`)
+  fetch(`${process.env.REACT_APP_API_ADDRESS}${userId}`)
     .then((res) => res.json())
     .then((projects) =>
       dispatch({
@@ -12,7 +13,7 @@ export const getProjects = (userId) => (dispatch) => {
 };
 
 export const getProject = (projectId) => (dispatch) => {
-  fetch(`http://localhost:4000/projects/project/${projectId}`)
+  fetch(`${process.env.REACT_APP_API_ADDRESS}/all/${projectId}`)
     .then((res) => res.json())
     .then((project) =>
       dispatch({
@@ -23,7 +24,7 @@ export const getProject = (projectId) => (dispatch) => {
 };
 
 export const createProject = (userId, projectData) => (dispatch) => {
-  fetch(`http://localhost:4000/projects/newProject/${userId}`, {
+  fetch(`${process.env.REACT_APP_API_ADDRESS}/projects/project/${userId}`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -40,7 +41,7 @@ export const createProject = (userId, projectData) => (dispatch) => {
 };
 
 export const updateProject = (projectId, projectData) => (dispatch) => {
-  fetch(`http://localhost:4000/projects/updateProject/update/${projectId}`, {
+  fetch(`${process.env.REACT_APP_API_ADDRESS}/updateProject/update/${projectId}`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -57,7 +58,7 @@ export const updateProject = (projectId, projectData) => (dispatch) => {
 };
 
 export const deleteProject = (projectId) => (dispatch) => {
-  fetch(`http://localhost:4000/projects/delete/${projectId}`, {
+  fetch(`${process.env.REACT_APP_API_ADDRESS}/projects/delete/${projectId}`, {
     method: 'DELETE',
     headers: {
       'content-type': 'application/json',

@@ -11,17 +11,13 @@ class Projects extends Component {
     this.props.getProjects(this.props.match.params.id);
   }
 
-  formatDomain() {
-    return 'test';
-  }
-
   render() {
     const projectItems = this.props.projects.map((project) => (
       <div key={project.id} className="column is-narrow">
         <Link to={{ pathname: `/project/${project.projectId}/dashboard` }}>
           <div className="box has-text-centered addBox ml mt">
             <div className="projectTitle is-size-3">{project.name}</div>
-            <div className="projectSubtitle"> {this.formatDomain}</div>
+            <div className="projectSubtitle"> {project.domain}</div>
           </div>
         </Link>
       </div>

@@ -104,7 +104,7 @@ async function addProduct(projectId, title, vendor, product_type, image_url) {
   });
 
   //sends back the updated product in shopify
-  logger.debug(JSON.stringify(response.data));
+  // logger.debug(JSON.stringify(response.data));
 }
 
 //Delete one product

@@ -39,10 +39,10 @@ export class SettingsEdit extends Component {
     e.preventDefault();
 
     const projectData = {
-      apiKey: this.state.apiKey,
-      password: this.state.password,
-      domain: this.state.domain,
-      name: this.state.name,
+      apiKey: this.state.apiKey.trim(),
+      password: this.state.password.trim(),
+      domain: this.state.domain.trim(),
+      name: this.state.name.trim(),
     };
 
     this.props.updateProject(this.props.match.params.projectId, projectData);

@@ -21,20 +21,13 @@ class Settings extends Component {
     this.state = {
       active: false,
       projectNameCheck: '',
-      projectCheck: false,
+      projectCheck: true,
     };
-    console.log(props);
   }
 
   onChange(e) {
-    console.log(e.target.value);
-
-    if (e.target.name === 'projectNameCheck') {
-      if (e.target.value === this.props.project.name) {
-        this.setState({
-          projectCheck: true,
-        });
-      }
+    if (e.target.name === 'projectNameCheck' && e.target.value === this.props.project.name) {
+      this.setState({ projectCheck: false });
     }
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -123,10 +116,13 @@ class Settings extends Component {
                     />
                   </section>
                   <footer className="modal-card-foot">
-                    <div className="button is-danger" disabled={!this.props.projectCheck} onClick={this.deleteProject}>
+                    <button
+                      className="button is-danger"
+                      disabled={this.state.projectCheck}
+                      onClick={this.deleteProject}
+                    >
                       Delete
-                    </div>
-                    <a class="button">Disabled</a>
+                    </button>
                   </footer>
                 </div>
               </div>

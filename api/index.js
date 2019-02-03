@@ -38,5 +38,5 @@ app.get('/', (req, res) => {
 
 //Logs what port the api server is running on
 app.listen(port, () => {
-  logger.info(`The server is running on port => ${port}`);
+  logger.debug(`The server is running on port => ${port}`);
 });

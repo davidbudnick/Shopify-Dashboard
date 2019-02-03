@@ -119,6 +119,7 @@ export class SettingsEdit extends Component {
 SettingsEdit.propTypes = {
   updateProject: propTypes.func.isRequired,
 };
+
 export default connect(
   null,
   { updateProject },

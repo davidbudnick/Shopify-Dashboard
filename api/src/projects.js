@@ -18,7 +18,7 @@ async function createProject(apiKey, password, domain, name, userId) {
     logger.error('There was an error creating this project', err);
   });
 
-  logger.info(JSON.stringify(projectData));
+  logger.debug(JSON.stringify(projectData));
 
   //find all projects to send back
   let projectsData = await db.Project.findAll({
@@ -70,7 +70,7 @@ async function getAllProjects() {
     logger.error('All projects could not be found in db', err);
   });
 
-  logger.info(projectData);
+  logger.debug(projectData);
 
   return projectData;
 }

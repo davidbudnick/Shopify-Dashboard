@@ -26,14 +26,11 @@ router.post('/newProject/:userId', async (req, res) => {
 
 //Updates project information in db
 router.post('/updateProject/update/:projectId', async (req, res) => {
-  logger.info(req.body.name);
   let projectData = await projects
     .updateProject(req.params.projectId, req.body.apiKey, req.body.password, req.body.domain, req.body.name)
     .catch((err) => {
       logger.error('There was an error passing the data', err);
     });
-
-  logger.info('the DATA', projectData);
 
   res.send(projectData);
 });

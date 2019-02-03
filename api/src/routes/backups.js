@@ -45,7 +45,7 @@ router.get('/b/clean', async (res) => {
       res.send('Files could not be deleted!');
       return;
     }
-    logger.info('backups deleted');
+    logger.debug('backups deleted');
     res.send('Files Deleted');
   });
 });

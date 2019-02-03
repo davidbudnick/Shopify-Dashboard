@@ -24,10 +24,10 @@ export class NewProject extends Component {
     e.preventDefault();
 
     const projectData = {
-      apiKey: this.state.apiKey,
-      password: this.state.password,
-      domain: this.state.domain,
-      name: this.state.name,
+      apiKey: this.state.apiKey.trim(),
+      password: this.state.password.trim(),
+      domain: this.state.domain.trim(),
+      name: this.state.name.trim(),
     };
 
     this.props.createProject(this.props.match.params.id, projectData);

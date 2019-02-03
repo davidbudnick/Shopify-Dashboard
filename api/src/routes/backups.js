@@ -38,6 +38,7 @@ router.get('/download/:backupId', async (req, res) => {
   res.download(`./temp/${req.params.backupId}.json`);
 });
 
+//Used for cleaning th backups on the server
 router.get('/b/clean', async (res) => {
   exec('rm -rf ./temp/*', (err) => {
     if (err) {

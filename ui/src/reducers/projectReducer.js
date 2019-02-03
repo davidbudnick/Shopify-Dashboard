@@ -1,4 +1,4 @@
-import { GET_PROJECT, GET_PROJECTS, CREATE_PROJECT, UPDATE_PROJECT, DELETE_PROJECT } from '../actions/types';
+import { GET_PROJECT, GET_PROJECTS, CREATE_PROJECT, UPDATE_PROJECT } from '../actions/types';
 
 const initailState = {
   project: [],
@@ -23,11 +23,6 @@ export default function(state = initailState, action) {
         projects: action.payload,
       };
     case UPDATE_PROJECT:
-      return {
-        ...state,
-        project: action.payload,
-      };
-    case DELETE_PROJECT:
       return {
         ...state,
         project: action.payload,

@@ -32,17 +32,6 @@ async function addUser(profile) {
   return userData;
 }
 
-//Finds all users in db
-//TODO: Remove this for production
-async function findAllUsers() {
-  let userData = await db.User.findAll().catch((err) => {
-    logger.error('Error finding users in db', err);
-  });
-
-  //Returns all users from db
-  return userData;
-}
-
 //Gets current users data from db
 async function getUser(userId) {
   //Finds the single user in the db
@@ -59,5 +48,4 @@ async function getUser(userId) {
 }
 
 module.exports.addUser = addUser;
-module.exports.findAllUsers = findAllUsers;
 module.exports.getUser = getUser;

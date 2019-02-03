@@ -6,7 +6,7 @@ const logger = pino({ prettyPrint: { colorize: true }, level: process.env.LOG_LE
 
 //returns all the projects from the db
 router.get('/all/:userId', async (req, res) => {
-  let projectData = await projects.getAllProjects(req.params.userId);
+  let projectData = await projects.getProjects(req.params.userId);
   res.send(projectData);
 });
 

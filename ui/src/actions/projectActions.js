@@ -1,4 +1,4 @@
-import { GET_PROJECT, CREATE_PROJECT, GET_PROJECTS, UPDATE_PROJECT, DELETE_PROJECT } from './types';
+import { GET_PROJECT, CREATE_PROJECT, GET_PROJECTS, UPDATE_PROJECT } from './types';
 require('dotenv').config();
 
 export const getProjects = (userId) => (dispatch) => {
@@ -52,22 +52,6 @@ export const updateProject = (projectId, projectData) => (dispatch) => {
     .then((project) =>
       dispatch({
         type: UPDATE_PROJECT,
-        payload: project,
-      }),
-    );
-};
-
-export const deleteProject = (projectId) => (dispatch) => {
-  fetch(`${process.env.REACT_APP_API_ADDRESS}projects/delete/${projectId}`, {
-    method: 'DELETE',
-    headers: {
-      'content-type': 'application/json',
-    },
-  })
-    .then((res) => res.json())
-    .then((project) =>
-      dispatch({
-        type: DELETE_PROJECT,
         payload: project,
       }),
     );

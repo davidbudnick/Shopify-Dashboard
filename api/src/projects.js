@@ -63,18 +63,6 @@ async function getProjects(userId) {
   return projectData;
 }
 
-//Gets all projects in db
-//TODO: Remove for production
-async function getAllProjects() {
-  let projectData = await db.Project.findAll().catch((err) => {
-    logger.error('All projects could not be found in db', err);
-  });
-
-  logger.debug(projectData);
-
-  return projectData;
-}
-
 //Update project settings in the db
 async function updateProject(projectId, apiKey, password, domain, name) {
   //Updates project in the database by projectId
@@ -123,6 +111,5 @@ async function deleteproject(projectId) {
 module.exports.createProject = createProject;
 module.exports.getProject = getProject;
 module.exports.getProjects = getProjects;
-module.exports.getAllProjects = getAllProjects;
 module.exports.updateProject = updateProject;
 module.exports.deleteproject = deleteproject;

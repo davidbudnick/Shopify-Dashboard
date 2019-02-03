@@ -2,7 +2,7 @@ import { CREATE_BACKUP, GET_BACKUPS, GET_BACKUP } from './types';
 require('dotenv').config();
 
 export const getBackups = (projectId) => (dispatch) => {
-  fetch(`${process.env.REACT_APP_API_ADDRESS}/backups/${projectId}`)
+  fetch(`${process.env.REACT_APP_API_ADDRESS}backups/${projectId}`)
     .then((res) => res.json())
     .then((backups) => {
       dispatch({
@@ -13,7 +13,7 @@ export const getBackups = (projectId) => (dispatch) => {
 };
 
 export const createBackup = (projectId) => (dispatch) => {
-  fetch(`${process.env.REACT_APP_API_ADDRESS}/backups/start/${projectId}`)
+  fetch(`${process.env.REACT_APP_API_ADDRESS}backups/start/${projectId}`)
     .then((res) => res.json())
     .then((backups) => {
       dispatch({
@@ -24,7 +24,7 @@ export const createBackup = (projectId) => (dispatch) => {
 };
 
 export const getBackup = (backupId) => (dispatch) => {
-  fetch(`${process.env.REACT_APP_API_ADDRESS}/backups/backup/${backupId}`)
+  fetch(`${process.env.REACT_APP_API_ADDRESS}backups/backup/${backupId}`)
     .then((res) => res.json())
     .then((backup) => {
       dispatch({

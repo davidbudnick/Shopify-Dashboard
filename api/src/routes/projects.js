@@ -11,7 +11,7 @@ router.get('/all/:userId', async (req, res) => {
 });
 
 //Creates a project in the user project json object
-router.post('/newProject/:userId', async (req, res) => {
+router.post('/new/:userId', async (req, res) => {
   //This should recieve a json object with the new project
   let projectData = await projects.createProject(
     req.body.apiKey,
@@ -25,7 +25,7 @@ router.post('/newProject/:userId', async (req, res) => {
 });
 
 //Updates project information in db
-router.post('/updateProject/update/:projectId', async (req, res) => {
+router.post('/update/:projectId', async (req, res) => {
   let projectData = await projects
     .updateProject(req.params.projectId, req.body.apiKey, req.body.password, req.body.domain, req.body.name)
     .catch((err) => {

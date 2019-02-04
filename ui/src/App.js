@@ -9,11 +9,10 @@ import Projects from './components/elements/Projects';
 import NewProject from './components/elements/NewProject';
 import Settings from './components/elements/Settings';
 import Backups from './components/elements/Backups';
-import Transfer from './components/elements/Transfer';
-// import Products from './components/elements/Products';
 import Product from './components/pages/Project';
 import Backup from './components/elements/Backup';
 import SettingsEdit from './components/elements/SettingsEdit';
+import Clone from './components/elements/Clone';
 
 class App extends Component {
   constructor(props) {
@@ -48,7 +47,7 @@ class App extends Component {
             <Route exact path="/project/:projectId/settings/edit" component={SettingsEdit} />
             <Route exact path="/project/:projectId/backups" component={Backups} />
             <Route exact path="/project/:projectId/backups/backup/:backupId" component={Backup} />
-            <Route exact path="/project/:projectId/transfer" component={Transfer} />
+            <Route exact path="/project/:projectId/clone" component={Clone} />
             <Route exact path="/callback" component={Callback} />
             <Route component={NotFound} />
           </Switch>

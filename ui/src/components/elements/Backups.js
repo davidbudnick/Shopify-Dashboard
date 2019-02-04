@@ -37,7 +37,7 @@ export class Backups extends Component {
           <div className="ml mt container">
             <div className="columns">
               <div className="column is-narrow">
-                <h2 className="title is-2 is-unselectable">Current Backups</h2>
+                <h2 className="title is-unselectable titleText is-size-1">Current Backups</h2>
               </div>
               <CreateBackup projectId={this.props.match.params.projectId} />
             </div>

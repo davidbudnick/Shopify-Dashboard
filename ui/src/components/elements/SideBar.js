@@ -42,10 +42,10 @@ export class SideBar extends Component {
         <ul className="menu-list">
           <li>
             <Link
-              to={{ pathname: `/project/${this.props.projectId}/transfer` }}
-              className={pageName === 'transfer' ? 'is-active' : ''}
+              to={{ pathname: `/project/${this.props.projectId}/clone` }}
+              className={pageName === 'clone' ? 'is-active' : ''}
             >
-              Transfer Products
+              Clone Products
             </Link>
           </li>
         </ul>

@@ -38,7 +38,7 @@ export class NewProject extends Component {
     return (
       <div className="container">
         <form className="ml mr mt" onSubmit={this.onSubmit}>
-          <div className="titleText mr is-size-1">Add Store</div>
+          <div className="title is-unselectable titleText is-size-1">Add Shopify Store</div>
           <div>
             <label className="label is-size-4">Shopify Store Name: </label>
             <input

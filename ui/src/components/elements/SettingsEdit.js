@@ -57,7 +57,7 @@ export class SettingsEdit extends Component {
         </div>
         <div className="column is-two-fifths">
           <form className="ml mr mt" onSubmit={this.onSubmit}>
-            <div className="titleText mr is-size-1">Edit Store</div>
+            <div className="title is-unselectable titleText is-size-1">Edit Store Settings</div>
             <div>
               <label className="label is-size-4">Shopify Store Name: </label>
               <input

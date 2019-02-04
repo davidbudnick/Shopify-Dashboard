@@ -171,8 +171,73 @@ async function deleteAllProducts(projectId) {
   return 'All products have been deleted from shopify', response;
 }
 
+async function cloneProducts(storeOneProjectId, storeTwoProjectId) {
+  /**
+   * First Store Queries
+   */
+
+  //Queries the database for the first project
+  let storeOneInfo = await db.Project.findOne({
+    where: {
+      projectId: storeOneProjectId,
+    },
+  }).catch((err) => {
+    logger.error(`There was an error looking up the project ID -> ${projectId}`, err);
+  });
+
+  //Creates the shopify url for the first store
+  let urlProjectOne = `${storeOneInfo.shopURL}admin/products.json`;
+
+  //Gets all the products from shopify for the second store
+  let responseStoreOne = await axios({
+    method: 'get',
+    urlProjectOne,
+    auth: {
+      username: storeOneInfo.apiKey,
+      password: storeOneInfo.password,
+    },
+  }).catch((err) => {
+    logger.error(
+      'There was an error finding all the product in shpoify. Being used to delete all the product in shopify',
+      err,
+    );
+  });
+
+  /**
+   * Second Store Queries
+   */
+
+  //Queries the database for the second project
+  let storeTwoInfo = await db.Project.findOne({
+    where: {
+      projectId: storeTwoProjectId,
+    },
+  }).catch((err) => {
+    logger.error(`There was an error looking up the project ID -> ${projectId}`, err);
+  });
+
+  //Creates the shopify url for the second store
+  let urlProjectTwo = `${storeTwoInfo.shopURL}admin/products.json`;
+
+  //Gets all the products from shopify for the second store
+  let responseStoreTwo = await axios({
+    method: 'get',
+    urlProjectTwo,
+    auth: {
+      username: storeTwoInfo.apiKey,
+      password: storeTwoInfo.password,
+    },
+  }).catch((err) => {
+    logger.error(
+      'There was an error finding all the product in shpoify. Being used to delete all the product in shopify',
+      err,
+    );
+  });
+}
+
 module.exports.addProduct = addProduct;
 module.exports.deleteProduct = deleteProduct;
 module.exports.getProducts = getProducts;
 module.exports.getProduct = getProduct;
 module.exports.deleteAllProducts = deleteAllProducts;
+module.exports.cloneProducts = cloneProducts;

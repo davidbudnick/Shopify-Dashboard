@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom';
+import 'bulma/css/bulma.css';
 import Callback from './components/elements/Callback';
 import auth0Client from './components/elements/Auth';
 import NavBar from './components/elements/NavBar';
 import NotFound from './components/pages/NotFound';
-import 'bulma/css/bulma.css';
 import Projects from './components/elements/Projects';
 import NewProject from './components/elements/NewProject';
 import Settings from './components/elements/Settings';

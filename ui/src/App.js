@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom';
-import 'bulma/css/bulma.css';
 import Callback from './components/elements/Callback';
 import auth0Client from './components/elements/Auth';
 import NavBar from './components/elements/NavBar';
@@ -13,6 +12,7 @@ import Product from './components/pages/Project';
 import Backup from './components/elements/Backup';
 import SettingsEdit from './components/elements/SettingsEdit';
 import Clone from './components/elements/Clone';
+import 'bulma/css/bulma.css';
 
 class App extends Component {
   constructor(props) {

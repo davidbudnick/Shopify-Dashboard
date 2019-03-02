@@ -27,7 +27,7 @@ class Projects extends Component {
       <div className="container mt">
         <div className="columns is-multiline">
           <div className="column is-narrow">
-            <Link to={{ pathname: `/newProject/${this.props.match.params.id}` }}>
+            <Link data-testid="new-project" to={{ pathname: `/newProject/${this.props.match.params.id}` }}>
               <div className="box has-text-centered addBox ml mt">
                 <i className="fas fa-plus is-size-3 newProject" />
                 <p className="mb is-size-5 has-text-weight-bold	">Add your shopify store</p>

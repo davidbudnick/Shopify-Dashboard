@@ -4,8 +4,8 @@ import { MemoryRouter } from 'react-router-dom';
 import Projects from '../components/elements/Projects';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-
-// import { getProjects } from '../test_helpers/getProjects';
+// import { getProjects } from '../__helpers__/getProjects';
+// import { getUser } from '../';
 
 //Redux Config
 const initialState = {
@@ -38,7 +38,7 @@ const mockStore = configureStore([thunk]);
 
 afterEach(() => {
   cleanup();
-  console.error.mockClear();
+  // console.error.mockClear();
 });
 
 //This mocks the function
@@ -52,6 +52,8 @@ test('<Projects/>', async () => {
       <Projects match={match} store={store} />
     </MemoryRouter>,
   );
+
+  expect(getByTestId('new-project').getAttribute('href')).toBe(`/newProject/${match.params.id}`);
 
   debug();
 });

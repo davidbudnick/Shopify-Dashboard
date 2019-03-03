@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, fireEvent, waitForElement } from 'react-testing-library';
+import { render, cleanup, waitForElement } from 'react-testing-library';
 import { MemoryRouter } from 'react-router-dom';
 import Projects from '../components/elements/Projects';
 import configureStore from 'redux-mock-store';
@@ -38,22 +38,79 @@ const mockStore = configureStore([thunk]);
 
 afterEach(() => {
   cleanup();
-  // console.error.mockClear();
+  console.error.mockClear();
 });
 
 //This mocks the function
 console.error = jest.fn();
 
-test('<Projects/>', async () => {
+describe('<Projects/>', async () => {
   let store = mockStore(initialState);
 
-  const { debug, getByTestId } = render(
-    <MemoryRouter>
-      <Projects match={match} store={store} />
-    </MemoryRouter>,
-  );
+  test('Frist Project Link', async () => {
+    const { debug, getByTestId } = render(
+      <MemoryRouter>
+        <Projects match={match} store={store} />
+      </MemoryRouter>,
+    );
+    await waitForElement(() => getByTestId('project-link'));
+    expect(getByTestId('project-link').getAttribute('href')).toBe(
+      `/project/${initialState.projects.projects[0].projectId}/dashboard`,
+    );
+  });
 
-  expect(getByTestId('new-project').getAttribute('href')).toBe(`/newProject/${match.params.id}`);
+  test('New Project Link', async () => {
+    const { debug, getByTestId } = render(
+      <MemoryRouter>
+        <Projects match={match} store={store} />
+      </MemoryRouter>,
+    );
+    await waitForElement(() => getByTestId('new-project-link'));
+    expect(getByTestId('new-project-link').getAttribute('href')).toBe(`/newProject/${match.params.id}`);
+  });
 
-  debug();
+  test('First Project Link', async () => {
+    const { debug, getByTestId } = render(
+      <MemoryRouter>
+        <Projects match={match} store={store} />
+      </MemoryRouter>,
+    );
+
+    await waitForElement(() => getByTestId('project-link'));
+    expect(getByTestId('project-link').getAttribute('href')).toBe(
+      `/project/${initialState.projects.projects[0].projectId}/dashboard`,
+    );
+  });
+
+  test('First Project Name', async () => {
+    const { debug, getByTestId } = render(
+      <MemoryRouter>
+        <Projects match={match} store={store} />
+      </MemoryRouter>,
+    );
+
+    await waitForElement(() => getByTestId('project-name'));
+    expect(getByTestId('project-name').textContent).toBe(initialState.projects.projects[0].name);
+  });
+
+  test('First Project Domain', async () => {
+    const { debug, getByTestId } = render(
+      <MemoryRouter>
+        <Projects match={match} store={store} />
+      </MemoryRouter>,
+    );
+
+    await waitForElement(() => getByTestId('project-domain'));
+    expect(getByTestId('project-domain').textContent).toBe(initialState.projects.projects[0].domain);
+  });
+
+  test('Number of Projects', async () => {
+    const { debug, getByTestId, getAllByTestId } = render(
+      <MemoryRouter>
+        <Projects match={match} store={store} />
+      </MemoryRouter>,
+    );
+    await waitForElement(() => getByTestId('project-domain'));
+    expect(getAllByTestId('project-name').length).toBe(initialState.projects.projects.length);
+  });
 });

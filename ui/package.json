@@ -30,9 +30,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
-    "deploy": "docker build -t dbudnick/shopify-dashboard-ui . && docker login && docker push dbudnick/shopify-dashboard-ui",
-    "test-a": "node test.js"
+    "deploy": "docker build -t dbudnick/shopify-dashboard-ui . && docker login && docker push dbudnick/shopify-dashboard-ui"
   },
   "eslintConfig": {
     "extends": "react-app"

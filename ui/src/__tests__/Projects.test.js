@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, waitForElement, getByTestId } from 'react-testing-library';
+import { render, cleanup, waitForElement } from 'react-testing-library';
 import { MemoryRouter } from 'react-router-dom';
 import Projects from '../components/elements/Projects';
 import configureStore from 'redux-mock-store';
@@ -37,7 +37,7 @@ describe('<Projects/>', async () => {
   let store = mockStore(initialState);
 
   test('Initial State Setup', async () => {
-    const response = await fetch('http://localhost:4000/projects/all/google-oauth2%7C115591737006318112594', {
+    const response = await fetch(`http://localhost:4000/projects/all/${match.params.id}`, {
       method: 'GET',
     });
 

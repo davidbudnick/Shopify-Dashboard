@@ -8,6 +8,8 @@ import thunk from 'redux-thunk';
 // import { getUser } from '../';
 
 //Redux Config
+const mockStore = configureStore([thunk]);
+
 const initialState = {
   projects: {
     project: [],
@@ -27,21 +29,19 @@ const initialState = {
   },
 };
 
-//Sets up the match on the route
+//Sets up the match on the route for a user
 const match = {
   params: {
     id: 'google-oauth2%7C115591737006318112594',
   },
 };
 
-const mockStore = configureStore([thunk]);
-
 afterEach(() => {
   cleanup();
   console.error.mockClear();
 });
 
-//This mocks the function
+//Mocks Error logging
 console.error = jest.fn();
 
 describe('<Projects/>', async () => {
@@ -70,7 +70,7 @@ describe('<Projects/>', async () => {
   });
 
   test('First Project Link', async () => {
-    const { debug, getByTestId } = render(
+    const { getByTestId } = render(
       <MemoryRouter>
         <Projects match={match} store={store} />
       </MemoryRouter>,
@@ -83,7 +83,7 @@ describe('<Projects/>', async () => {
   });
 
   test('First Project Name', async () => {
-    const { debug, getByTestId } = render(
+    const { getByTestId } = render(
       <MemoryRouter>
         <Projects match={match} store={store} />
       </MemoryRouter>,
@@ -94,7 +94,7 @@ describe('<Projects/>', async () => {
   });
 
   test('First Project Domain', async () => {
-    const { debug, getByTestId } = render(
+    const { getByTestId } = render(
       <MemoryRouter>
         <Projects match={match} store={store} />
       </MemoryRouter>,
@@ -105,7 +105,7 @@ describe('<Projects/>', async () => {
   });
 
   test('Number of Projects', async () => {
-    const { debug, getByTestId, getAllByTestId } = render(
+    const { getByTestId, getAllByTestId } = render(
       <MemoryRouter>
         <Projects match={match} store={store} />
       </MemoryRouter>,

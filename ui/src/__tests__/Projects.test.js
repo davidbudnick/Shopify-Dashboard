@@ -1,41 +1,30 @@
 import React from 'react';
-import { render, cleanup, waitForElement } from 'react-testing-library';
+import { render, cleanup, waitForElement, getByTestId } from 'react-testing-library';
 import { MemoryRouter } from 'react-router-dom';
 import Projects from '../components/elements/Projects';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-// import { getProjects } from '../__helpers__/getProjects';
-// import { getUser } from '../';
+import fetch from 'node-fetch';
 
 //Redux Config
 const mockStore = configureStore([thunk]);
 
+//Redux state setup
 const initialState = {
   projects: {
     project: [],
-    projects: [
-      {
-        id: 1,
-        projectId: 'project-x9zu1ccjrprg7xf',
-        userId: 'google-oauth2|115591737006318112594',
-        name: 'Budnick Shop!',
-        apiKey: 'a956c6a8bea9af1c64838bdb90fddf6f',
-        password: 'f7fd2c7c65147f58e3ebebe9d56384f2',
-        domain: 'https://budnick1.myshopify.com/',
-        createdAt: '2019-02-04T03:13:21.698Z',
-        updatedAt: '2019-02-04T03:26:30.286Z',
-      },
-    ],
+    projects: [],
   },
 };
 
-//Sets up the match on the route for a user
+//match setup
 const match = {
   params: {
     id: 'google-oauth2%7C115591737006318112594',
   },
 };
 
+//Jest Setup
 afterEach(() => {
   cleanup();
   console.error.mockClear();
@@ -47,8 +36,16 @@ console.error = jest.fn();
 describe('<Projects/>', async () => {
   let store = mockStore(initialState);
 
+  test('Initial State Setup', async () => {
+    const response = await fetch('http://localhost:4000/projects/all/google-oauth2%7C115591737006318112594', {
+      method: 'GET',
+    });
+
+    initialState.projects.projects = await response.json();
+  });
+
   test('Frist Project Link', async () => {
-    const { debug, getByTestId } = render(
+    const { getByTestId } = render(
       <MemoryRouter>
         <Projects match={match} store={store} />
       </MemoryRouter>,
@@ -60,7 +57,7 @@ describe('<Projects/>', async () => {
   });
 
   test('New Project Link', async () => {
-    const { debug, getByTestId } = render(
+    const { getByTestId } = render(
       <MemoryRouter>
         <Projects match={match} store={store} />
       </MemoryRouter>,

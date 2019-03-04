@@ -20,7 +20,7 @@ const initialState = {
 //match setup
 const match = {
   params: {
-    id: 'google-oauth2%7C115591737006318112594',
+    id: 'google-oauth2|115591737006318112594',
   },
 };
 

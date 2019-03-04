@@ -23,11 +23,11 @@ afterEach(() => {
 //Mocks Error logging
 console.error = jest.fn();
 
-auth0Client.isAuthenticated = jest.fn();
+// auth0Client.isAuthenticated = jest.fn();
 
 describe('<Navbar />', () => {
   let user;
-  let user_id = 'google-oauth2%7C115591737006318112594';
+  let user_id = 'google-oauth2|115591737006318112594';
 
   test('Initial State Setup', async () => {
     const response = await fetch(`http://localhost:4000/user/${user_id}`, {
@@ -65,7 +65,5 @@ describe('<Navbar />', () => {
         <Navbar match={match} />
       </MemoryRouter>,
     );
-    auth0Client.isAuthenticated = true;
-    debug();
   });
 });

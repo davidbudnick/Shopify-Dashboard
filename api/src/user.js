@@ -47,5 +47,16 @@ async function getUser(userId) {
   return userData;
 }
 
+//Gets all user data from the database
+async function getUsers() {
+  let userData = await db.User.findAll().catch((err) => {
+    logger.error('Users could not be found in the db', err);
+  });
+
+  //Returns all users data
+  return userData;
+}
+
+module.exports.getUsers = getUsers;
 module.exports.addUser = addUser;
 module.exports.getUser = getUser;

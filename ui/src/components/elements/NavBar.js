@@ -50,7 +50,9 @@ export class NavBar extends Component {
           )}
           {!auth0Client.isAuthenticated() && (
             <div className="navbar-start">
-              <a className="navbar-item titleText">Shopify Dashbaord</a>
+              <a data-testid="site-title" className="navbar-item titleText">
+                Shopify Dashbaord
+              </a>
             </div>
           )}
           <div className="navbar-end">
@@ -66,7 +68,9 @@ export class NavBar extends Component {
                 {auth0Client.isAuthenticated() && (
                   <p className="control mt">
                     <a className="has-text-white">
-                      <label className="mr">{auth0Client.getProfile().name}</label>
+                      <label data-testid="user-name" className="mr">
+                        {auth0Client.getProfile().name}
+                      </label>
                     </a>
                   </p>
                 )}

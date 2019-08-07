@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
-import propTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createProject } from '../../actions/projectActions';
+import React, { Component } from "react";
+import propTypes from "prop-types";
+import { connect } from "react-redux";
+import { createProject } from "../../actions/projectActions";
+//testing
 
 export class NewProject extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      apiKey: '',
-      password: '',
-      domain: '',
-      name: '',
+      apiKey: "",
+      password: "",
+      domain: "",
+      name: "",
     };
 
     this.onChange = this.onChange.bind(this);
@@ -31,14 +32,16 @@ export class NewProject extends Component {
     };
 
     this.props.createProject(this.props.match.params.id, projectData);
-    this.props.history.replace('/profile/' + this.props.match.params.id);
+    this.props.history.replace("/profile/" + this.props.match.params.id);
   }
 
   render() {
     return (
       <div className="container">
         <form className="ml mr mt" onSubmit={this.onSubmit}>
-          <div className="title is-unselectable titleText is-size-1">Add Shopify Store</div>
+          <div className="title is-unselectable titleText is-size-1">
+            Add Shopify Store
+          </div>
           <div>
             <label className="label is-size-4">Shopify Store Name: </label>
             <input
@@ -101,5 +104,5 @@ NewProject.propTypes = {
 };
 export default connect(
   null,
-  { createProject },
+  { createProject }
 )(NewProject);

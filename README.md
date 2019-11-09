@@ -14,10 +14,6 @@ React shopify dashboard designed to be collection of mini shopify tools used to 
 - Transfer products from one store to another on account
 - View products in card and list view
 
-## Dev Features
-- Full TDD coverage of React
-- Full TDD coverage of API
-
 ## Screenshots
 ![image](https://user-images.githubusercontent.com/18271248/50792267-fa429d80-1289-11e9-96f5-508fe59b2159.png)
 
